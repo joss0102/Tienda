@@ -1,23 +1,26 @@
 import { Component, Input } from '@angular/core';
 import { CarritoService } from '../../../services/carrito.service';
-import { NgIf } from '@angular/common';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-compra',
-  imports: [NgIf],
+  standalone: true,
+  imports: [CommonModule], // Se agregó CommonModule para *ngIf
   templateUrl: './compra.component.html',
   styleUrl: './compra.component.scss'
 })
 export class CompraComponent {
-  @Input() libro: any; // Recibe el libro desde el padre
+  @Input() libro: any;  // Recibe el libro desde el padre
   isVisible = true;
 
   constructor(private carritoService: CarritoService) {}
 
   agregarYcerrar() {
     if (this.libro) {
-      this.carritoService.agregarAlCarrito(this.libro); // Agrega el libro al carrito
+      this.carritoService.agregarLibro(this.libro);  // Agregar el libro al carrito
     }
-    this.isVisible = false; // Cierra el mensaje
+    this.isVisible = false;  // Cierra el mensaje
   }
 }
+
+

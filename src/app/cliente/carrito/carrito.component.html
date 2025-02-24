@@ -1,7 +1,27 @@
 <div class="container cart-container">
     <div class="cart-icon">🛒</div>
     <h2 class="mb-3">Carrito de Compras</h2>
-    <p class="cart-message">Parece que aún no has agregado nada a tu carrito.</p>
-    <button class="explore-btn mt-3" routerLink="/tienda">Explorar Productos</button>
-    <p class="mt-4 text-muted">Descubre nuestras mejores ofertas y productos exclusivos.</p>
-</div>
+  
+    <div *ngIf="librosEnCarrito.length > 0; else carritoVacio">
+      <ul class="list-group">
+        <li class="list-group-item d-flex justify-content-between align-items-center" *ngFor="let libro of librosEnCarrito">
+          <div class="d-flex align-items-center">
+            <img [src]="libro.imagen" class="img-thumbnail" style="width: 50px;">
+            <div class="ms-3">
+              <h5>{{ libro.titulo }}</h5>
+              <p class="text-muted">Autor: {{ libro.autor }}</p>
+              <p class="fw-bold text-primary">${{ libro.precio }}</p>
+            </div>
+          </div>
+        </li>
+      </ul>
+      <button class="btn btn-danger mt-3" (click)="vaciarCarrito()">Vaciar Carrito</button>
+    </div>
+  
+    <ng-template #carritoVacio>
+      <p class="cart-message">Parece que aún no has agregado nada a tu carrito.</p>
+      <button class="explore-btn mt-3" routerLink="/tienda">Explorar Productos</button>
+      <p class="mt-4 text-muted">Descubre nuestras mejores ofertas y productos exclusivos.</p>
+    </ng-template>
+  </div>
+  

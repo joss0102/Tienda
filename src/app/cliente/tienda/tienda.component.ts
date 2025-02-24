@@ -1,72 +1,57 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { CarritoService } from '../../services/carrito.service';
-import { NgIf } from '@angular/common';
-import { CompraComponent } from '../tabs/compra/compra.component';
+import { CompraComponent } from "../tabs/compra/compra.component";
+import { CarritoComponent } from "../carrito/carrito.component";
+
+
+class Libro {
+  constructor(
+    public titulo: string,
+    public autor: string,
+    public genero: string,
+    public disponible: boolean,
+    public precio: number,
+    public imagen: string,
+    public descripcion: string
+  ) {}
+}
 
 @Component({
   selector: 'app-tienda',
-  imports: [CommonModule, NgIf, CompraComponent],
+  imports: [CommonModule, CompraComponent, CarritoComponent],
   standalone: true,
   templateUrl: './tienda.component.html',
   styleUrls: ['./tienda.component.scss']
 })
 export class TiendaComponent {
-  libroSeleccionado: any = null;  // Variable que guarda el libro seleccionado
-
-  librosDestacados = [
-    { 
-      titulo: 'Trono de cristal', 
-      precio: 22.99, 
-      imagen: '/Trono de cristal.png',
-      descripcion: 'Primera parte.'
-    },
-    { 
-      titulo: 'Corona de medianoche', 
-      precio: 22.50, 
-      imagen: '/Corona de medianoche.png',
-      descripcion: 'Segunda parte.'
-    },
-    { 
-      titulo: 'La espada de la asesina', 
-      precio: 23.99, 
-      imagen: '/La espada de la asesina.png',
-      descripcion: 'Tercera parte. (Spin off)'
-    },
-    { 
-      titulo: 'Heredera de fuego', 
-      precio: 24.99, 
-      imagen: '/Heredera de fuego.png',
-      descripcion: 'Cuarta parte.'
-    },
-    { 
-      titulo: 'Reina de sombras', 
-      precio: 25.99, 
-      imagen: '/Reina de sombras.png',
-      descripcion: 'Quinta parte.'
-    },
-    { 
-      titulo: 'Imperio de tormentas', 
-      precio: 26.99, 
-      imagen: '/Imperio de tormentas.png',
-      descripcion: 'Sexta parte.'
-    },
-    { 
-      titulo: 'Torre del alba', 
-      precio: 26.99, 
-      imagen: '/Torre del alba.png',
-      descripcion: 'Septima parte.'
-    },
-    { 
-      titulo: 'Reino de cenizas', 
-      precio: 27.99, 
-      imagen: '/Reino de cenizas.png',
-      descripcion: 'Octova y ultima parte'
-    },
+  librosDestacados: Libro[] = [
+    new Libro('Trono de cristal', 'Sarah J. Maas', 'Fantasía', true, 22.99, '/Trono de cristal.png', 'Primera parte.'),
+    new Libro('Corona de medianoche', 'Sarah J. Maas', 'Fantasía', true, 22.50, '/Corona de medianoche.png', 'Segunda parte.'),
+    new Libro('La espada de la asesina', 'Sarah J. Maas', 'Fantasía', true, 23.99, '/La espada de la asesina.png', 'Tercera parte. (Spin off)'),
+    new Libro('Heredera de fuego', 'Sarah J. Maas', 'Fantasía', true, 24.99, '/Heredera de fuego.png', 'Cuarta parte.'),
+    new Libro('Reina de sombras', 'Sarah J. Maas', 'Fantasía', true, 25.99, '/Reina de sombras.png', 'Quinta parte.'),
+    new Libro('Imperio de tormentas', 'Sarah J. Maas', 'Fantasía', true, 26.99, '/Imperio de tormentas.png', 'Sexta parte.'),
+    new Libro('Torre del alba', 'Sarah J. Maas', 'Fantasía', true, 26.99, '/Torre del alba.png', 'Séptima parte.'),
+    new Libro('Reino de cenizas', 'Sarah J. Maas', 'Fantasía', true, 27.99, '/Reino de cenizas.png', 'Octava y última parte.')
   ];
+  isVisible = false;
+  libroSeleccionado: Libro | null = null;  // Almacena el libro seleccionado
 
-  // Método para seleccionar un libro y mostrar el mensaje
-  agregarAlCarrito(libro: any) {
-    this.libroSeleccionado = libro; // Asigna el libro seleccionado a la variable
+  constructor(private carritoService: CarritoService) {}
+  simpleFunction() {
+    console.log("¡Función llamada!");
   }
+  agregarAlCarrito(libro: Libro) {
+    console.log("Libro agregado:", libro);  // Verifica si el libro se pasa correctamente
+    this.carritoService.agregarLibro(libro);  // Agrega el libro al carrito
+    console.log("Libro agregado al carrito en el servicio");
+    this.isVisible = true;  // Muestra el mensaje de "Libro añadido"
+    this.libroSeleccionado = libro;  // Almacena el libro seleccionado
+    console.log("hola");  // Este mensaje debería aparecer en la consola
+}
+
+
+
+
 }
