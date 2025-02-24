@@ -1,23 +1,28 @@
-<section class="container mt-4">
-    <h2 class="text-center mb-4">Saga de Trono de Cristal</h2>
-    <div class="row g-4">
-      <div class="col-md-4" *ngFor="let libro of libros">
-        <div class="card shadow-sm libro-card position-relative">
-          <img [src]="libro.imagen" class="card-img-top img-fluid" [alt]="libro.titulo">
-          <div class="card-body text-center">
-            <h5 class="card-title">{{ libro.titulo }}</h5>
-            <p class="card-text text-primary fw-bold">${{ libro.precio }}</p>
+<section class="container mt-4"> 
+  <h2 class="text-center mb-4">Saga de Trono de Cristal</h2>
+  <div class="row g-4">
+    <div class="col-md-4" *ngFor="let libro of libros">
+      <div class="card shadow-sm libro-card position-relative">
+        <img [src]="libro.imagen" class="card-img-top img-fluid" [alt]="libro.titulo">
+        <div class="card-body text-center">
+          <h5 class="card-title">{{ libro.titulo }}</h5>
+          <p class="card-text text-primary fw-bold">${{ libro.precio }}</p>
 
-
-            <button class="btn btn-success" (click)="agregarAlCarrito(libro)">Agregar al Carrito</button>
-          </div>
-          <div class="hover-info">
-            <p class="text-white">{{ libro.descripcion }}</p>
-          </div>
+          <button class="btn btn-success" (click)="agregarAlCarrito(libro)">Agregar al Carrito</button>
+        </div>
+        <div class="hover-info">
+          <p class="text-white">{{ libro.descripcion }}</p>
         </div>
       </div>
     </div>
-  </section>
-  
-  <app-compra *ngIf="isVisible" [libro]="libroSeleccionado"></app-compra>
+  </div>
 
+  <!-- Paginación -->
+  <div class="d-flex justify-content-center mt-4 adelante">
+    <button class="btn btn-primary" (click)="paginaAnterior()" [disabled]="paginaActual === 1">Anterior</button>
+    <span class="mx-3">Página {{ paginaActual }} de {{ totalPaginas }}</span>
+    <button class="btn btn-primary" (click)="siguientePagina()" [disabled]="paginaActual === totalPaginas">Siguiente</button>
+  </div>
+</section>
+
+<app-compra *ngIf="isVisible" [libro]="libroSeleccionado"></app-compra>
