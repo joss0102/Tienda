@@ -1,0 +1,39 @@
+.register-container {
+
+  width: 700px;
+  margin: auto;
+  padding: 80px;
+  border-radius: 15px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+  background: white;
+  text-align: center;
+}
+.register-title {
+  font-size: 32px;
+  margin-bottom: 30px;
+  color: #333;
+}
+.btn-google {
+  background: #ffb300;
+  color: white;
+  width: 100%;
+  padding: 15px;
+  font-size: 18px;
+  margin-bottom: 20px;
+}
+.btn-google:hover {
+  background: #dd9b00;
+}
+.btn-primary {
+  background: #ffb300;
+  width: 100%;
+  padding: 15px;
+  font-size: 18px;
+}
+.btn-primary:hover {
+  background: #dd9b00;
+}
+.form-control {
+  font-size: 18px;
+  padding: 12px;
+}

@@ -1,0 +1,89 @@
+/*
+.container {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    height: 70vh;
+  }
+  
+  h2 {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .form-group {
+    margin-bottom: 15px;
+  }
+  
+  input {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  button {
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    border: none;
+    border-radius: 4px;
+    color: white;
+    font-size: 16px;
+  }
+  
+  button:disabled {
+    background-color: #ccc;
+  }
+  
+  .text-danger {
+    font-size: 12px;
+    margin-top: 5px;
+  }
+  */
+  .login-container {
+    height: 70vh;
+    width: 700px;
+    margin: auto;
+    padding: 60px;
+    border-radius: 15px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+    background: white;
+    text-align: center;
+}
+.login-title {
+    font-size: 32px;
+    margin-bottom: 30px;
+    color: #333;
+}
+.btn-google {
+    background: #ffb300;
+    color: white;
+    width: 100%;
+    padding: 15px;
+    font-size: 18px;
+    margin-bottom: 20px;
+}
+.btn-google:hover {
+    background: #dd9b00;
+}
+.btn-primary {
+  background: #ffb300;
+    width: 100%;
+    padding: 15px;
+    font-size: 18px;
+}
+.btn-primary:hover {
+  background: #dd9b00;
+    width: 100%;
+    padding: 15px;
+    font-size: 18px;
+}
+.form-control {
+    font-size: 18px;
+    padding: 12px;
+}

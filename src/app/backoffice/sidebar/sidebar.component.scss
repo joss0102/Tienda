@@ -1,0 +1,19 @@
+i,p{
+  cursor: pointer;
+}
+i:hover,p:hover{
+  color: rgb(255, 255, 255);
+  background-color: rgb(0, 0, 0);
+}
+.sidebar-container {
+  overflow-x: hidden;
+  overflow-y: auto;
+
+
+  &.hide-me {
+    span, h2 {
+      display: none !important;
+    }
+  }
+
+}

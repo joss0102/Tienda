@@ -1,0 +1,32 @@
+
+.libro-card{
+    width: 400px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+img{
+    width: 60%;
+}
+
+
+.libro-card {
+    transition: transform 0.3s ease-in-out;
+    overflow: hidden;
+}
+.libro-card:hover {
+    transform: scale(1.05);
+}
+.hover-info {
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 10px;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+.libro-card:hover .hover-info {
+    opacity: 1;
+}

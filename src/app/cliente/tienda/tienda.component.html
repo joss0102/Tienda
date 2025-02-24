@@ -1,0 +1,23 @@
+<section class="container mt-4">
+    <section class="my-5">
+        <h2 class="text-center mb-4">Saga de Trono de Cristal</h2>
+        <div class="row g-4">
+            <div class="col-md-4" *ngFor="let libro of librosDestacados">
+                <div class="card shadow-sm libro-card position-relative">
+                    <img [src]="libro.imagen" class="card-img-top img-fluid" [alt]="libro.titulo">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">{{ libro.titulo }}</h5>
+                        <p class="card-text text-primary fw-bold">${{ libro.precio }}</p>
+                        <button class="btn btn-success" (click)="agregarAlCarrito(libro)">Comprar</button>
+                    </div>
+                    <div class="hover-info">
+                        <p class="text-white">{{ libro.descripcion }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mostrar el componente Compra solo si hay un libro seleccionado -->
+    <app-compra *ngIf="libroSeleccionado" [libro]="libroSeleccionado"></app-compra>
+</section>

@@ -1,0 +1,71 @@
+.perfil-container {
+    width: 100%;
+    max-width: 275px;
+    left: 0;
+    top: 70px;
+    bottom: 0;
+    background-color: #fff;
+    border-right: 1.5px solid #000000;
+    padding: 15px;
+}
+
+/* Estilos de la cabecera del perfil */
+.perfil-header {
+    text-align: center;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #ddd;
+}
+
+.perfil-img {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border: 3px solid #ddd;
+}
+
+/* Información personal */
+.perfil-info p {
+    font-size: 14px;
+    color: #555;
+    margin: 5px 0;
+}
+
+/* Habilidades */
+.perfil-skills h5 {
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+.perfil-skills ul {
+    padding-left: 20px;
+    list-style: square;
+}
+
+.perfil-skills li {
+    font-size: 14px;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+/* Progreso de proyectos */
+.perfil-progress h5 {
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+.progress {
+    height: 10px;
+    border-radius: 5px;
+}
+
+/* Estadísticas */
+.perfil-stats {
+    display: flex;
+    justify-content: space-around;
+    padding-top: 15px;
+    border-top: 1px solid #ddd;
+}
+
+.stat-box {
+    text-align: center;
+}
