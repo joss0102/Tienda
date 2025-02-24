@@ -1,48 +1,32 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { CompraComponent } from "../tabs/compra/compra.component";
+import { Libro } from '../../services/models/libro.model';
+import { LibroService } from '../../services/libro-service.service';
+
 
 @Component({
   selector: 'app-home',
-  imports: [CommonModule, CompraComponent, RouterModule], // Asegura que NgFor y NgIf estén disponibles
+  imports: [CommonModule, CompraComponent, RouterModule],
   templateUrl: './home.component.html',
-  styleUrl: './home.component.scss'
+  styleUrls: ['./home.component.scss']
 })
-export class HomeComponent {
+export class HomeComponent implements OnInit {
   isActiveItems: any = {
     isActiveNotification: false,
     isActiveSettings: false,
-  }
-  librosDestacados = [
-    { 
-      titulo: 'Corona de medianoche', 
-      precio: 22.50, 
-      imagen: '/Corona de medianoche.png',
-      descripcion: 'Segunda parte'
-    },
-    { 
-      titulo: 'Reino de cenizas', 
-      precio: 27.99, 
-      imagen: '/Reino de cenizas.png',
-      descripcion: 'Octava y ultima parte'
-    },
-    { 
-      titulo: 'Reina de sombras', 
-      precio: 25.99, 
-      imagen: '/Reina de sombras.png',
-      descripcion: 'Quinta parte'
-    }
-  ];
-  toggleItem(option: string) {
-    if (this.isActiveItems[option]) {
-      this.isActiveItems[option] = false;
-    }
-    else {
-      Object.keys(this.isActiveItems).forEach((item) => {
-        this.isActiveItems[item] = false;
-      })
-      this.isActiveItems[option] = true;
-    }
+  };
+  librosDestacados: Libro[] = [];
+
+  constructor(private libroService: LibroService) {}
+
+  ngOnInit(): void {
+    // Obtener los libros y ordenarlos por popularidad de mayor a menor
+    const libros = this.libroService.getLibros();
+    // Ordenar los libros por popularidad y tomar los 3 primeros
+    this.librosDestacados = libros
+      .sort((a, b) => b.popularidad - a.popularidad)  // Ordenar de mayor a menor por popularidad
+      .slice(0, 3);  // Tomar los primeros 3 libros
   }
 }

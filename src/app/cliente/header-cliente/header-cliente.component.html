@@ -1,6 +1,6 @@
 <header class="bg-dark row position-sticky top-0 z-3 py-3 shadow px-3">
   <div class="col-auto d-flex align-items-center">
-    <a class="text-decoration-none d-block" rel="noopener" href="">
+    <a class="text-decoration-none d-block" rel="noopener"routerLink="/home">
       <img style="max-width: 55px" src="/icono-libros.png" alt="logo">
     </a>
   </div>
@@ -9,7 +9,6 @@
   <div class="col d-flex justify-content-center">
     <form class="d-flex w-75">
       <div class="input-group">
-        <!-- Icono de búsqueda dentro del input -->
         <span class="input-group-text bg-light border-end-0">
           <i class="bi bi-search"></i>
         </span>
@@ -26,8 +25,12 @@
     <nav class="d-flex flex-row align-items-center gap-3 d-none d-md-flex">
       <a class="text-white text-decoration-none fw-bold py-2 px-3 rounded transition" rel="noopener" routerLink="/home">Inicio</a>
       <a class="text-white text-decoration-none fw-bold py-2 px-3 rounded transition" rel="noopener" routerLink="tienda">Tienda</a>
-      <a class="text-white text-decoration-none py-2 px-3 rounded transition" rel="noopener" routerLink="/carrito">
+      <a class="text-white text-decoration-none py-2 px-3 rounded transition position-relative" rel="noopener" routerLink="/carrito">
         <i class="bi bi-cart fs-5"></i>
+        <!-- Mostrar número de libros en el carrito -->
+        <span *ngIf="cantidadLibrosEnCarrito > 0" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+          {{ cantidadLibrosEnCarrito }}
+        </span>
       </a>
       <a type="button" class="btn btn-outline-light px-3 py-1 d-flex align-items-center gap-2" routerLink="/login">
         <i class="bi bi-person"></i> Iniciar sesión

@@ -5,43 +5,50 @@ nav {
 .btn-white {
   background-color: var(--bs-white);
 }
+
 .transition {
   transition: background 0.3s ease, color 0.3s ease;
 }
+
 .transition:hover {
   background: rgba(255, 255, 255, 0.2);
 }
 
-
-
 /* Estilos para la barra de búsqueda */
+.form-control {
+  border-radius: 20px;
+  padding: 0.8rem 1.5rem;
+  font-size: 1rem;
+  background-color: #f8f9fa;
+  border: 1px solid #ccc;
+  transition: all 0.3s ease;
+  
+  &:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+  }
+}
 
+/* Diseño en dispositivos móviles */
+@media (max-width: 767px) {
   .form-control {
-    border-radius: 20px;
-    padding: 0.8rem 1.5rem;
-    font-size: 1rem;
-    background-color: #f8f9fa;
-    border: 1px solid #ccc;
-    transition: all 0.3s ease;
-    
-    &:focus {
-      border-color: #007bff;
-      box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
-    }
+    font-size: 0.9rem; /* Texto más pequeño en móviles */
+    padding: 0.5rem 1rem; /* Menos relleno en móviles */
   }
 
-
-
-
-  /* Diseño en dispositivos móviles */
-  @media (max-width: 767px) {
-    .form-control {
-      font-size: 0.9rem; /* Texto más pequeño en móviles */
-      padding: 0.5rem 1rem; /* Menos relleno en móviles */
-    }
-
-    button {
-      padding: 0.5rem; /* Botón más pequeño en móviles */
-    }
+  button {
+    padding: 0.5rem; /* Botón más pequeño en móviles */
   }
+}
 
+/* Estilos para el ícono del carrito con el número */
+.position-relative {
+  position: relative;
+}
+
+.badge {
+  font-size: 0.8rem; /* Ajustar el tamaño del número */
+  padding: 0.4rem 0.4rem;
+  background-color: #dc3545; /* Color rojo */
+  color: white; /* Color del número */
+}
