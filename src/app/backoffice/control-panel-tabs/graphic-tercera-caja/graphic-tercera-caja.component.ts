@@ -1,28 +1,28 @@
-import {Component, OnInit} from '@angular/core';
-import {ChartConfiguration, ChartDataset, ChartType} from 'chart.js';
-import {BaseChartDirective} from 'ng2-charts';
+import { Component, OnInit } from '@angular/core'; 
+import { BaseChartDirective } from 'ng2-charts';
+import { ChartConfiguration, ChartDataset, ChartType } from 'chart.js';
+import { LibroService } from '../../../services/libro-service.service';
 
 @Component({
   selector: 'app-graphic-tercera-caja',
-  imports: [
-    BaseChartDirective
-  ],
+  imports: [BaseChartDirective],
   standalone: true,
   templateUrl: './graphic-tercera-caja.component.html',
   styleUrl: './graphic-tercera-caja.component.scss'
 })
 export class GraphicTerceraCajaComponent implements OnInit {
 
+  constructor(private libroService: LibroService) {}
 
   ngOnInit(): void {
     this.setChartData();
   }
 
   public lineChartOptions: ChartConfiguration['options'] = {
-    responsive: true, // Línea obligatoria
-    maintainAspectRatio: false, // Proporción del gráfico
+    responsive: true,
+    maintainAspectRatio: false,
     plugins: {
-      legend: { // campo opcional
+      legend: {
         display: true,
         position: 'bottom'
       }
@@ -31,18 +31,18 @@ export class GraphicTerceraCajaComponent implements OnInit {
       x: {
         title: {
           display: true,
-          text: "Meses",
+          text: "Libros",
           font: {size: 14, weight: "bolder"}
         }
       },
       y: {
         title: {
           display: true,
-          text: "Páginas",
+          text: "Precio (€)",
           font: {size: 14, weight: "bolder"}
         },
         ticks: {
-          stepSize: 10,
+          stepSize: 5,
         }
       }
     },
@@ -50,36 +50,29 @@ export class GraphicTerceraCajaComponent implements OnInit {
       mode: 'index',
       intersect: false
     }
-  }
+  };
 
-  public lineChartLabels: string[] = []
+  public lineChartLabels: string[] = [];
   public lineChartData: ChartDataset<'line'>[] = [
     {
       data: [],
-      label: "Páginas",
-      backgroundColor: [],
-      hoverBackgroundColor: [],
-      borderColor: "blue", // Color de la línea
-      borderWidth: 2, // Grosor de la línea
-      fill: false, // No rellenar debajo de la línea
-      pointBackgroundColor: "blue", // Color de los puntos
-      pointBorderColor: "blue",
-      pointRadius: 5 // Tamaño de los puntos
+      label: "Precio de los Libros",
+      backgroundColor: "rgba(75, 192, 192, 0.2)",
+      borderColor: "rgba(75, 192, 192, 1)",
+      borderWidth: 2,
+      fill: false,
+      pointBackgroundColor: "rgba(75, 192, 192, 1)",
+      pointBorderColor: "rgba(75, 192, 192, 1)",
+      pointRadius: 5
     }
   ];
 
   public lineChartType: ChartType = 'line';
 
-
   private setChartData(): void {
-    const data = {
-      labels: ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"],
-      values: [5983, 3459, 4506, 5757, 0, 0, 0, 1250, 4918, 4118, 974, 0]
-    }
-
-    this.lineChartLabels = data.labels;
-    this.lineChartData[0].data = data.values
+    const libros = this.libroService.getLibros();
+    
+    this.lineChartLabels = libros.map(libro => libro.titulo);
+    this.lineChartData[0].data = libros.map(libro => libro.precio);
   }
-
-
-  }
+}
