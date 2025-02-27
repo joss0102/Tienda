@@ -1,6 +1,8 @@
 # Proyecto Web: Tienda de Libros en Línea
 
-Este proyecto consiste en una **tienda de libros en línea** donde los usuarios pueden explorar, buscar y agregar libros al carrito de compra. Además, proporciona una experiencia sencilla para los mismos usuarios al permitirles ver un análisis detallado de los libros leídos, autores y generos.
+Este proyecto desarrollado en angular consiste en una **tienda de libros en línea** donde los usuarios pueden explorar, buscar y agregar libros al carrito de compra. Además, proporciona una experiencia sencilla para los mismos usuarios al permitirles ver un análisis detallado de los libros leídos, autores y generos.
+
+**Idea del backoffice**: Idea de backoffice
 
 ## Características Principales
 
@@ -10,7 +12,8 @@ Este proyecto consiste en una **tienda de libros en línea** donde los usuarios 
 
 ## Estructura de la Página Web
 
-### 1. Sección del Usuario
+### 1. Sección del Usuario 
+Se entra nada mas enytrar en la pagina web
 Esta sección está diseñada para proporcionar una experiencia de compra fluida y fácil de navegar.
 
 - **Inicio**
@@ -26,6 +29,7 @@ Esta sección está diseñada para proporcionar una experiencia de compra fluida
   - Opciones para eliminar elementos del carrito o proceder al pago.
 
 ### 2. Sección Administrador
+se entra en esta seccion iniciando sesion o con /app
 Los administradores pueden gestionar y analizar los libros leídos por los usuarios.
 
 - **Análisis de libros leídos**
@@ -39,6 +43,7 @@ Este proyecto está desarrollado utilizando las siguientes tecnologías:
 - **CSS3**: Para el diseño visual y la personalización de la interfaz.
 - **TypeScript**: Para la interactividad en la tienda, como la búsqueda de libros y la gestión del carrito.
 - **Bootstrap**: Framework CSS para crear una interfaz responsive y moderna.
+- **Dependencias**: chartsjs ng2-charts
 
 ## Instalación del proyecto
 
