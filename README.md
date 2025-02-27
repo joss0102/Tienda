@@ -40,24 +40,24 @@ Este proyecto está desarrollado utilizando las siguientes tecnologías:
 - **TypeScript**: Para la interactividad en la tienda, como la búsqueda de libros y la gestión del carrito.
 - **Bootstrap**: Framework CSS para crear una interfaz responsive y moderna.
 
-## Instalación
+## Instalación del proyecto
 
 1. Clona este repositorio a tu máquina local:
     ```bash
-    git clone https://github.com/tu-usuario/tienda-libros.git
+    git clone https://github.com/joss0102/Tienda.git
     ```
    
 2. Navega al directorio del proyecto:
     ```bash
-    cd tienda-libros
+    cd tienda
     ```
 
-3. Instala las dependencias necesarias (si usas Node.js para el backend):
+3. Instala las dependencias necesarias:
     ```bash
     npm install
     ```
 
-4. Ejecuta la aplicación localmente:
+4. Ejecuta la aplicación localmente con angular:
     ```bash
     ng serve
     ```
