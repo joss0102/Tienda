@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { CompraComponent } from "../tabs/compra/compra.component";
 import { Libro } from '../../services/models/libro.model';
-import { LibroService } from '../../services/libro-service.service';
+import { LibroService } from '../../services/service/libro-service.service';
 
 
 @Component({

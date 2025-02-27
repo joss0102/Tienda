@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common'; // Importa CommonModule
 import { MenuMovilesComponent } from '../menu-moviles/menu-moviles.component';
 import { RouterModule } from '@angular/router';
-import { CarritoService } from '../../services/carrito.service';
+import { CarritoService } from '../../services/service/carrito.service';
 import { Subscription } from 'rxjs'; // Importa Subscription
 
 @Component({

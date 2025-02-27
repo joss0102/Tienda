@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { CarritoService } from '../../../services/carrito.service';
+import { CarritoService } from '../../../services/service/carrito.service';
 import { CommonModule } from '@angular/common';
 
 @Component({

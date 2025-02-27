@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core'; 
 import { BaseChartDirective } from 'ng2-charts';
 import { ChartConfiguration, ChartDataset, ChartType } from 'chart.js';
-import { LibroService } from '../../../services/libro-service.service';
+import { LibroService } from '../../../services/service/libro-service.service';
 
 @Component({
   selector: 'app-graphic-tercera-caja',

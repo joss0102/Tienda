@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { CarritoService } from '../../services/carrito.service';
-import { LibroService } from '../../services/libro-service.service';
+import { CarritoService } from '../../services/service/carrito.service';
+import { LibroService } from '../../services/service/libro-service.service';
 import { Libro } from '../../services/models/libro.model';
 import { CompraComponent } from '../tabs/compra/compra.component';
 import { NgFor } from '@angular/common';
