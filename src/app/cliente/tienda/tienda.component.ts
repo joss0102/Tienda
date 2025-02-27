@@ -3,11 +3,11 @@ import { CarritoService } from '../../services/service/carrito.service';
 import { LibroService } from '../../services/service/libro-service.service';
 import { Libro } from '../../services/models/libro.model';
 import { CompraComponent } from '../tabs/compra/compra.component';
-import { NgFor } from '@angular/common';
+import { NgFor, NgIf } from '@angular/common';
 
 @Component({
   selector: 'app-tienda',
-  imports:[CompraComponent, NgFor],
+  imports:[CompraComponent, NgFor,NgIf],
   templateUrl: './tienda.component.html',
   styleUrls: ['./tienda.component.scss']
 })
@@ -18,7 +18,7 @@ export class TiendaComponent implements OnInit {
   paginaActual: number = 1;
   totalPaginas: number = 0;
   libroSeleccionado: Libro | null = null;
-
+  isVisible = false;
   constructor(
     private carritoService: CarritoService,
     private libroService: LibroService
@@ -55,5 +55,6 @@ export class TiendaComponent implements OnInit {
   agregarAlCarrito(libro: Libro) {
     console.log("Libro agregado:", libro);
     this.carritoService.agregarLibro(libro);
+    this.isVisible = true;
   }
 }

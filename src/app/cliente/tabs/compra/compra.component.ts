@@ -1,11 +1,11 @@
 import { Component, Input } from '@angular/core';
 import { CarritoService } from '../../../services/service/carrito.service';
-import { CommonModule } from '@angular/common';
+import { CommonModule, NgIf } from '@angular/common';
 
 @Component({
   selector: 'app-compra',
   standalone: true,
-  imports: [CommonModule], // Se agregó CommonModule para *ngIf
+  imports: [CommonModule,NgIf], // Se agregó CommonModule para *ngIf
   templateUrl: './compra.component.html',
   styleUrl: './compra.component.scss'
 })
