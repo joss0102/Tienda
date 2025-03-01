@@ -2,11 +2,12 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
+import { NgIf } from '@angular/common';
 
 @Component({
   selector: 'app-registro',
   imports: [
-    ReactiveFormsModule  // Importar ReactiveFormsModule en el componente
+    ReactiveFormsModule, NgIf
   ],
   standalone: true,
   templateUrl: './registro.component.html',

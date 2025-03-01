@@ -23,35 +23,28 @@ export class TiendaComponent implements OnInit {
     private carritoService: CarritoService,
     private libroService: LibroService
   ) {}
-
   ngOnInit(): void {
     this.libros = this.libroService.getLibros();
-    this.totalPaginas = Math.ceil(this.libros.length / this.librosPorPagina); // Calcula el número total de páginas
+    this.totalPaginas = Math.ceil(this.libros.length / this.librosPorPagina);
     this.cargarLibros();
   }
-
   cargarLibros() {
     const inicio = (this.paginaActual - 1) * this.librosPorPagina;
     const fin = inicio + this.librosPorPagina;
     this.libros = this.libroService.getLibros().slice(inicio, fin);
   }
-
-  // Cambiar a la página siguiente
   siguientePagina() {
     if (this.paginaActual < this.totalPaginas) {
       this.paginaActual++;
       this.cargarLibros();
     }
   }
-
-  // Cambiar a la página anterior
   paginaAnterior() {
     if (this.paginaActual > 1) {
       this.paginaActual--;
       this.cargarLibros();
     }
   }
-
   agregarAlCarrito(libro: Libro) {
     console.log("Libro agregado:", libro);
     this.carritoService.agregarLibro(libro);

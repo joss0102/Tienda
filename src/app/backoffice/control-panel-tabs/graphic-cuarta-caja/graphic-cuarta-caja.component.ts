@@ -63,7 +63,7 @@ export class GraphicCuartaCajaComponent implements OnInit {
     {
       data: [],
       label: "Objetivo",
-      borderColor: "red", // Color diferente para la nueva línea
+      borderColor: "red",
       borderWidth: 2,
       fill: false,
       pointBackgroundColor: "red",
@@ -77,8 +77,8 @@ export class GraphicCuartaCajaComponent implements OnInit {
   private setChartData(): void {
     const data = {
       labels: ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"],
-      values1: [10, 4, 7, 8, 0, 0, 0, 3, 12, 11, 2, 0], // Progreso
-      values2: [2, 5, 5, 7, 8, 1, 0, 0, 3, 10, 10, 5] // Nueva línea (Objetivo)
+      values1: [10, 4, 7, 8, 0, 0, 0, 3, 12, 11, 2, 0],
+      values2: [2, 5, 5, 7, 8, 1, 0, 0, 3, 10, 10, 5]
     };
 
     this.lineChartLabels = data.labels;

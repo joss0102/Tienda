@@ -1,11 +1,8 @@
 <div class="d-flex align-items-center">
-  <!-- Botón hamburguesa -->
   <button type="button" class="btn btn-light d-md-none me-3" (click)="toggleMenu()">
     <i class="bi bi-list fs-4"></i>
   </button>
 </div>
-
-<!-- Menú móvil desplegable (aparece en la derecha en columna) -->
 <div [ngClass]="{'d-none': !isMenuOpen, 'menu-open': isMenuOpen}" class="menu-movil bg-dark text-white p-3 rounded shadow">
   <button type="button" class="btn btn-dark d-md-none me-3" (click)="toggleMenu()">
     <i class="bi bi-list fs-4"></i>Menu

@@ -20,11 +20,7 @@ import { RouterModule } from '@angular/router';
   styleUrl: './header-backoffice.component.scss'
 })
 export class HeaderBackofficeComponent {
-
   isActive: boolean = false;
-
-  // Variables de tabs
-
   isActiveItems: any = {
     isActiveNotification: false,
     isActiveSettings: false,
@@ -33,8 +29,6 @@ export class HeaderBackofficeComponent {
   constructor(
     private sidebarStatusService: SidebarStatusService,
   ) {}
-
-  // isActiveNotification: boolean = false;
 
   toggleLogo() {
     this.isActive = !this.isActive;

@@ -4,8 +4,6 @@
       <img style="max-width: 55px" src="/icono-libros.png" alt="logo">
     </a>
   </div>
-
-  <!-- Barra de búsqueda centrada -->
   <div class="col d-flex justify-content-center">
     <form class="d-flex w-75">
       <div class="input-group">
@@ -13,21 +11,16 @@
           <i class="bi bi-search"></i>
         </span>
         <input type="text" class="form-control" placeholder="Buscar..." aria-label="Buscar">
-        <button class="btn btn-outline-light ms-2" type="submit">
-          Buscar
-        </button>
+        <button class="btn btn-outline-light ms-2" type="submit">Buscar</button>
       </div>
     </form>
   </div>
-
   <div class="col-auto d-flex align-items-center ms-auto">
-    <!-- Menú de navegación (pantallas grandes) -->
     <nav class="d-flex flex-row align-items-center gap-3 d-none d-md-flex">
       <a class="text-white text-decoration-none fw-bold py-2 px-3 rounded transition" rel="noopener" routerLink="/home">Inicio</a>
       <a class="text-white text-decoration-none fw-bold py-2 px-3 rounded transition" rel="noopener" routerLink="tienda">Tienda</a>
       <a class="text-white text-decoration-none py-2 px-3 rounded transition position-relative" rel="noopener" routerLink="/carrito">
         <i class="bi bi-cart fs-5"></i>
-        <!-- Mostrar número de libros en el carrito -->
         <span *ngIf="cantidadLibrosEnCarrito > 0" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
           {{ cantidadLibrosEnCarrito }}
         </span>
@@ -36,8 +29,6 @@
         <i class="bi bi-person"></i> Iniciar sesión
       </a>
     </nav>
-
-    <!-- Botón de menú hamburguesa en móviles -->
     <app-menu-moviles></app-menu-moviles>
   </div>
 </header>

@@ -17,18 +17,18 @@ export class CarritoComponent implements OnInit {
   constructor(private carritoService: CarritoService) {}
 
   ngOnInit() {
-    this.librosEnCarrito = this.carritoService.obtenerLibros();  // Obtener los libros al cargar
-    console.log(this.librosEnCarrito);  // Verifica los datos que se cargan
+    this.librosEnCarrito = this.carritoService.obtenerLibros();
+    console.log(this.librosEnCarrito);
   }
 
   vaciarCarrito() {
     this.carritoService.vaciarCarrito();
-    this.librosEnCarrito = [];  // Limpiar el array de libros en el carrito
+    this.librosEnCarrito = [];
   }
   eliminarLibro(libro: Libro) {
     const index = this.librosEnCarrito.indexOf(libro);
     if (index > -1) {
-      this.librosEnCarrito.splice(index, 1);  // Elimina el libro del array
+      this.librosEnCarrito.splice(index, 1);
     }
   }
   

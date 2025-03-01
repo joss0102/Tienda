@@ -6,7 +6,6 @@ import { Libro } from '../models/libro.model';
   providedIn: 'root'
 })
 export class LibroService {
-  // Inicializa el array de libros con instancias de la clase Libro
   libros: Libro[] = [
     new Libro('Trono de cristal', 'Sarah J. Maas', 'Romance y misterio', true, 22.99, '/covers/Trono de cristal.png', 'Primera parte. TOG', 3),
     new Libro('Corona de medianoche', 'Sarah J. Maas', 'Romance y misterio', true, 22.50, '/covers/Corona de medianoche.png', 'Segunda parte TOG', 3),
@@ -35,42 +34,30 @@ export class LibroService {
   ];
 
   private librosSubject = new BehaviorSubject<Libro[]>(this.libros);
-  private carrito: Libro[] = []; // Este es el array donde se almacenarán los libros en el carrito.
+  private carrito: Libro[] = [];
 
   constructor() {}
-
-  // Obtiene los libros disponibles
   obtenerLibros() {
     return this.librosSubject.asObservable();
   }
-
-  // Agrega un libro al carrito
   agregarLibroAlCarrito(libro: Libro) {
     this.carrito.push(libro);
-    this.librosSubject.next(this.carrito); // Actualiza el carrito en el observable
+    this.librosSubject.next(this.carrito);
   }
-
-  // Elimina un libro del carrito
   eliminarLibroDelCarrito(libro: Libro) {
     const index = this.carrito.indexOf(libro);
     if (index !== -1) {
-      this.carrito.splice(index, 1); // Elimina el libro del carrito
-      this.librosSubject.next(this.carrito); // Notifica el cambio
+      this.carrito.splice(index, 1);
+      this.librosSubject.next(this.carrito);
     }
   }
-
-  // Vacía el carrito
   vaciarCarrito() {
     this.carrito = [];
-    this.librosSubject.next(this.carrito); // Notifica que el carrito está vacío
+    this.librosSubject.next(this.carrito);
   }
-
-  // Devuelve el array de libros en el carrito
   obtenerCarrito() {
     return this.carrito;
   }
-
-  // Devuelve todos los libros disponibles
   getLibros() {
     return this.libros;
   }

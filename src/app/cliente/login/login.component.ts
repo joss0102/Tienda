@@ -27,7 +27,6 @@ export class LoginComponent {
   onSubmit() {
     if (this.loginForm.valid) {
       console.log('Formulario Enviado', this.loginForm.value);
-      //navegar a home
       window.location.href = '/app';
     } else {
       console.log('Formulario no válido');
