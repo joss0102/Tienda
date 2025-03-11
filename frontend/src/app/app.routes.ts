@@ -10,7 +10,7 @@ import {TiendaComponent} from './cliente/tienda/tienda.component';
 import {ControlPanelComponent} from './backoffice/control-panel/control-panel.component';
 import {PageNotFoundComponent} from './page-not-found/page-not-found.component';
 import { CarritoComponent } from './cliente/carrito/carrito.component';
-
+import {publicGuard} from './services/guards/public.guard';
 
 
 export const routes: Routes = [
@@ -20,7 +20,7 @@ export const routes: Routes = [
   {
     path: "", component: LayoutComponent, children: [ // -> www.ejemplo.com
       {path: "", component: HomeComponent}, // -> www.ejemplo.com
-      {path: "login", component: LoginComponent}, // -> www.ejemplo.com/login
+      {path: "login", component: LoginComponent, canActivate: [publicGuard]}, // -> www.ejemplo.com/login
       {path: "registro", component: RegistroComponent}, // -> www.ejemplo.com/registro
       {path: "tienda", component: TiendaComponent}, // www.ejemplo.com/tienda
       {path: "home", component: HomeComponent},

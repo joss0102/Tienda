@@ -3,62 +3,137 @@
     background: url('/covers/Ciudad medialuna.jpg') center/cover no-repeat;
     position: relative;
     border-radius: 10px;
-}
+    overflow: hidden;
 
-.book .overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.6);
-    border-radius: 10px;
-}
-
-.book-content {
-
-    position: relative;
-    z-index: 2;
-}
-.libros{
-
-    img{
-        width: 70%;
-    }
-    .libro-card {
-
-        transition: transform 0.3s ease-in-out;
-        overflow: hidden;
-    }
-    .libro-card:hover {
-        transform: scale(1.05);
-    }
-    .hover-info {
-
-        bottom: 0;
+    .overlay {
+        position: absolute;
+        top: 0;
         left: 0;
         width: 100%;
         height: 100%;
-        background: rgba(0, 0, 0, 0.8);
-        color: white;
-        padding: 10px;
+        background: rgba(0, 0, 0, 0.6);
+        border-radius: 10px;
+    }
+
+    .book-content {
+        position: relative;
+        z-index: 2;
+        padding: 2rem;
+    }
+
+    h1 {
+        font-size: 2.5rem;
+        letter-spacing: 1px;
+    }
+
+    p {
+        font-size: 1.25rem;
+        margin-bottom: 2rem;
+    }
+
+    button {
+        padding: 0.75rem 2rem;
+        font-size: 1rem;
+        transition: transform 0.3s ease-in-out;
+    }
+
+    button:hover {
+        transform: scale(1.1);
+    }
+}
+
+/* Estilo para el contenedor de productos */
+.datos-container {
+    margin-bottom: 100px;
+    h2 {
+        text-align: center;
+        font-size: 2rem;
+        margin-bottom: 2rem;
+        color: #333;
+    }
+
+    .no-productos {
+        text-align: center;
+        color: #999;
+        font-size: 1.25rem;
+    }
+
+    .productos-lista {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1.5rem;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .producto-item {
+        width: 100%;
+        max-width: 350px;
+    }
+
+    .product-card {
+        border-radius: 10px;
+        background-color: #fff;
+        box-shadow: 0 12px 20px rgba(0, 0, 0, 0.4);
+
+        transition: transform 0.3s ease-in-out;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    .product-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    }
+
+    .product-card img {
+        width: 80%;
+        object-fit: cover;
+        border-radius: 10px 10px 0 0;
+    }
+
+    .card-body {
+        padding: 1.5rem;
+        text-align: center;
+    }
+
+    .product-title {
+        font-size: 1.25rem;
+        color: #333;
+        margin-bottom: 0.5rem;
+    }
+
+    .product-price {
+        font-size: 1rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .product-seller {
+        font-size: 0.875rem;
+        color: #777;
+    }
+  
+    .hover-info {
         opacity: 0;
-        transition: opacity 0.3s;
+        width: 100%;
+        height: 70%;
+        position: absolute;
+        transition: opacity 0.3s ease;
+        text-align: justify;        // Justificar el texto
+    
+        text-indent: 30px;          // Agregar sangría al primer renglón
+        display: flex;              // Usar flex para la alineación
+        justify-content: center;    // Asegura que el contenido esté centrado
+        align-items: center;        // Centra el texto verticalmente
     }
-    .libro-card:hover .hover-info {
-        opacity: 1;
+    
+    .product-card:hover .hover-info {
+        opacity: 0.8;
     }
-}
-
-
-
-
-
-/* Animación de botones */
-.categories .btn {
-    transition: all 0.3s ease-in-out;
-}
-
-.categories .btn:hover {
-    transform: scale(1.1);
 }

@@ -15,6 +15,7 @@ export class LibroService {
     new Libro('Imperio de tormentas', 'Sarah J. Maas', 'Fantaía y romance', true, 26.99, '/covers/Imperio de tormentas.png', 'Sexta parte TOG', 8),
     new Libro('Torre del alba', 'Sarah J. Maas', 'Fantaía y romance', true, 26.99, '/covers/Torre del alba.png', 'Séptima parte TOG', 5),
     new Libro('Reino de cenizas', 'Sarah J. Maas', 'Fantaía y romance', true, 27.99, '/covers/Reino de cenizas.png', 'Octava y última parte TOG', 10),
+    
     new Libro('Alas de Sangre', 'Rebecca Yarros', 'Dragones', true, 21.99, '/covers/Alas de sangre.png', 'Primera parte Empireo', 6),
     new Libro('Alas de Hierro', 'Rebecca Yarros', 'Dragones', true, 21.99, '/covers/Alas de hierro.png', 'Segunda parte Empireo', 7),
     new Libro('Alas de Onix', 'Rebecca Yarros', 'Dragones', true, 21.99, '/covers/Alas de onix.png', 'Tercera parte Empireo', 6),

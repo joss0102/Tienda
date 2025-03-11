@@ -1,6 +1,7 @@
+<!-- header-cliente.component.html -->
 <header class="bg-dark row position-sticky top-0 z-3 py-3 shadow px-3">
   <div class="col-auto d-flex align-items-center">
-    <a class="text-decoration-none d-block" rel="noopener"routerLink="/home">
+    <a class="text-decoration-none d-block" rel="noopener" routerLink="/home">
       <img style="max-width: 55px" src="/icono-libros.png" alt="logo">
     </a>
   </div>
@@ -25,8 +26,13 @@
           {{ cantidadLibrosEnCarrito }}
         </span>
       </a>
-      <a type="button" class="btn btn-outline-light px-3 py-1 d-flex align-items-center gap-2" routerLink="/login">
+      
+      <!-- Mostrar botón de iniciar sesión o cerrar sesión basado en el estado del token -->
+      <a *ngIf="!isLoggedIn" class="btn btn-outline-light px-3 py-1 d-flex align-items-center gap-2" routerLink="/login">
         <i class="bi bi-person"></i> Iniciar sesión
+      </a>
+      <a *ngIf="isLoggedIn" class="btn btn-outline-light px-3 py-1 d-flex align-items-center gap-2" (click)="logout()">
+        <i class="bi bi-box-arrow-right"></i> Cerrar sesión
       </a>
     </nav>
     <app-menu-moviles></app-menu-moviles>

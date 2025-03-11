@@ -22,6 +22,7 @@ export class TiendaComponent implements OnInit {
   constructor(
     private carritoService: CarritoService,
     private libroService: LibroService
+    
   ) {}
   ngOnInit(): void {
     this.libros = this.libroService.getLibros();
