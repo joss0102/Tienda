@@ -1,19 +1,11 @@
 # Proyecto Web: Tienda de Libros en Línea
-s
+
 Este proyecto desarrollado en angular consiste en una **tienda de libros en línea** donde los usuarios pueden explorar, buscar y agregar libros al carrito de compra. Además, proporciona una experiencia sencilla para los mismos usuarios al permitirles ver un análisis detallado de los libros leídos, autores y generos.
-
-**Idea del backoffice**: Idea de backoffice
-
-## Características Principales
-
-- **Explorar libros por categoría**: Los usuarios pueden navegar entre distintas categorías de libros para encontrar sus lecturas favoritas.
-- **Agregar libros al carrito**: Los usuarios pueden añadir libros al carrito de compras y revisar su selección antes de proceder al pago.
-- **Visualizar imágenes de las portadas**: Cada libro incluye una imagen de su portada para que los usuarios puedan identificarlo fácilmente.
 
 ## Estructura de la Página Web
 
 ### 1. Sección del Usuario 
-Se entra nada mas enytrar en la pagina web
+Se entra nada mas entrar en la pagina web.
 Esta sección está diseñada para proporcionar una experiencia de compra fluida y fácil de navegar.
 
 - **Inicio**
@@ -27,6 +19,8 @@ Esta sección está diseñada para proporcionar una experiencia de compra fluida
 - **Carrito**
   - Visualización del contenido del carrito de compra, donde los usuarios pueden revisar los libros seleccionados.
   - Opciones para eliminar elementos del carrito o proceder al pago.
+- **Perfil de usuario**
+  - 
 
 ### 2. Sección Administrador
 se entra en esta seccion iniciando sesion o con /app
@@ -35,34 +29,40 @@ Los administradores pueden gestionar y analizar los libros leídos por los usuar
 - **Análisis de libros leídos**
   - Visualización de estadísticas sobre los libros que los usuarios han leído, cómo han interactuado con ellos, y qué libros son los más populares.
 
-## Tecnologías Utilizadas
 
-Este proyecto está desarrollado utilizando las siguientes tecnologías:
+## Instalacion de dependencias y arranque de servidor
 
-- **HTML5**: Para la estructura básica del sitio web.
-- **CSS3**: Para el diseño visual y la personalización de la interfaz.
-- **TypeScript**: Para la interactividad en la tienda, como la búsqueda de libros y la gestión del carrito.
-- **Bootstrap**: Framework CSS para crear una interfaz responsive y moderna.
-- **Dependencias**: chartsjs ng2-charts
-
-## Instalación del proyecto
-
-1. Clona este repositorio a tu máquina local:
-    ```bash
-    git clone https://github.com/joss0102/Tienda.git
-    ```
-   
-2. Navega al directorio del proyecto:
-    ```bash
-    cd tienda
-    ```
-
-3. Instala las dependencias necesarias:
+1. Instala las dependencias necesarias:
     ```bash
     npm install
     ```
 
-4. Ejecuta la aplicación localmente con angular:
+3. Ejecuta la aplicación localmente con angular:
     ```bash
     ng serve
     ```
+
+
+## Requisitos Mínimos
+
+### 1. Backoffice (Panel de Administración)
+- El backoffice debe contar con las siguientes secciones:
+  - Página principal: Vista general de administración.
+  - Página de perfil: Información del usuario y opción para modificar contraseña (puede estar en la misma página de perfil).
+  - Página de ver mis productos: Listado de productos creados por el usuario, con opción para añadir y eliminar productos.
+
+### 2. Página del Cliente
+
+- El sistema debe contar con una interfaz para los clientes, con las siguientes páginas:
+  - Página principal: Home de la tienda.
+  - Página de login: Ingreso de usuarios.
+  - Página de registro: Creación de cuenta.
+  - Página de ver productos: Listado de productos disponibles.
+  - Página de descripción del producto: Información detallada de cada producto.
+  - Página de checkout: Proceso de compra, incluyendo dirección de envío y pago con tarjeta de crédito u otros métodos.
+### 3. Requisitos Técnicos Adicionales
+
+Guards: Además de los guards explicados en clase, se debe añadir un guard que impida el acceso al backoffice a los clientes con el rol "CLIENT". Este rol está almacenado en sessionStorage (visto en la última clase).
+Estructura y modularidad: Se valorará el uso de una estructura bien organizada y modular en Angular.
+Diseño y experiencia de usuario (UX/UI): Se tendrá en cuenta la interfaz de la tienda para evaluar la navegabilidad y la experiencia del usuario.
+Responsive Design: La tienda debe adaptarse correctamente a diferentes tamaños de pantalla.
