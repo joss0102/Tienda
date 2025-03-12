@@ -9,21 +9,24 @@
           <p class="card-text text-primary fw-bold">${{ dato.price }}</p>
           <button class="btn btn-success" (click)="agregarAlCarrito(dato)">Agregar al Carrito</button>
         </div>
-        <div class="hover-info">
+        <div class="hover-genre">
           <p class="text-white">{{ dato.genre1 }} y {{ dato.genre2 }}</p>
         </div>
       </div>
     </div>
   </div>
   
-  <div class="d-flex justify-content-center mt-4 adelante">
-    <button class="btn btn-primary" (click)="paginaAnterior()" [disabled]="paginaActual === 1">
+  <div class="d-flex justify-content-center mt-4 adelante"  >
+    <div class="pagination">
+  <button class="btn btn-primary" (click)="paginaAnterior()" [disabled]="paginaActual === 1">
       Anterior
     </button>
-    <span class="mx-3">Página {{ paginaActual }} de {{ totalPaginas }}</span>
-    <button class="btn btn-primary" (click)="siguientePagina()" [disabled]="paginaActual === totalPaginas">
-      Siguiente
-    </button>
+      <span class="mx-3">Página {{ paginaActual }} de {{ totalPaginas }}</span>
+      <button class="btn btn-primary" (click)="siguientePagina()" [disabled]="paginaActual === totalPaginas">
+        Siguiente
+      </button>
+    </div>
+  
   </div>
 </section>
 

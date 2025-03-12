@@ -6,6 +6,7 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
+
 @Entity
 @Table(name = "roles")
 @Getter
@@ -21,16 +22,8 @@ public class Role {
     private RoleName roleName;
 
 
-    public Long getId() {
-        return id;
-    }
-
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public RoleName getRoleName() {
-        return roleName;
     }
 
     public void setRoleName(RoleName roleName) {

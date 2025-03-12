@@ -11,7 +11,10 @@
 
     <!-- Contenedor de Productos -->
     <div class="datos-container mt-5">
-        <h2 class="text-center mb-4">Libros Más Populares</h2>
+        <div class="populares">
+            <h2 class="text-center mb-4 populares">Libros Más Populares</h2>
+        </div>
+        
 
         <!-- Mensaje cuando no hay productos -->
         <div *ngIf="productosDestacados.length === 0" class="no-productos text-center">
