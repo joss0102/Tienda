@@ -44,6 +44,7 @@
 
 
     .libro-card{
+        cursor: pointer;
         width: 350px;
         height: 100%;
         background-color: rgba(255, 255, 255, 0);
@@ -103,4 +104,24 @@
     }
     }
     
+}
+.modal{
+
+    .modal-dialog{
+
+        .modal-content{
+
+            .modal-header{
+                border: 1px solid rgb(255, 255, 255);   /* Establece un borde de 9px */
+                border-bottom: none;          /* Elimina el borde superior */
+                border-radius: 5px 5px 0 0;
+                background-color: #4c4c4c;
+            }
+            .modal-body{
+                border: 1px solid rgb(255, 255, 255); 
+                border-top: none;
+                border-radius: 0 0 5px 5px;
+            }
+        }
+    }
 }

@@ -4,12 +4,12 @@ import { Libro } from '../../services/models/libro.model';
 import { NgFor, NgIf } from '@angular/common';
 import { ProductService } from '../../services/service/product.service';
 import { Subscription } from 'rxjs';
-import { CompraComponent } from '../tabs/compra/compra.component'; // Importa CompraComponent
+import { ShowInfoComponent } from '../show-info/show-info.component';
 
 @Component({
   selector: 'app-tienda',
   standalone: true,
-  imports: [NgFor, NgIf, CompraComponent],
+  imports: [NgFor, NgIf,ShowInfoComponent],
   templateUrl: './tienda.component.html',
   styleUrls: ['./tienda.component.scss']
 })
@@ -22,7 +22,6 @@ export class TiendaComponent implements OnInit, OnDestroy {
   paginaActual: number = 1;
   totalPaginas: number = 0;
   libroSeleccionado: Libro | null = null;
-  isVisible = false;
 
   constructor(
     private carritoService: CarritoService,
@@ -31,8 +30,9 @@ export class TiendaComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.datosSubscription = this.productService.getAllProducts().subscribe(
-      (response) => {
-        this.datos = response;  
+      (response: Libro[]) => {
+        console.log(response);  // Verifica la respuesta completa de la API
+        this.datos = response;
         this.totalPaginas = Math.ceil(this.datos.length / this.librosPorPagina);
         this.cargarLibros();  
       },
@@ -41,6 +41,8 @@ export class TiendaComponent implements OnInit, OnDestroy {
       }
     );
   }
+  
+  
 
   cargarLibros() {
     const inicio = (this.paginaActual - 1) * this.librosPorPagina;
@@ -69,11 +71,12 @@ export class TiendaComponent implements OnInit, OnDestroy {
     }
   }
 
-  agregarAlCarrito(libro: Libro) {
-    console.log("Libro agregado:", libro);
-    this.carritoService.agregarLibro(libro);
+  verDetalles(libro: Libro) {
     this.libroSeleccionado = libro;
-    this.isVisible = true;
+  }
+
+  cerrarModal() {
+    this.libroSeleccionado = null;
   }
 
   ngOnDestroy(): void {

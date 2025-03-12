@@ -1,51 +1,65 @@
 <section class="container mt-4">
   <section class="book text-center text-white py-5 rounded position-relative">
-        <div class="overlay"></div>
-        <div class="book-content position-relative">
-            <h1 class="fw-bold display-4">Los mejores libros en tu lugar de confianza</h1>
-            <p class="lead fs-5">Explora, descubre y sumérgete en los libros del momento.</p>
-        </div>
-    </section>
+    <div class="overlay"></div>
+    <div class="book-content position-relative">
+        <h1 class="fw-bold display-4">Los mejores libros en tu lugar de confianza</h1>
+        <p class="lead fs-5">Explora, descubre y sumérgete en los libros del momento.</p>
+    </div>
+  </section>
 </section>
-  
-<section class="main mt-4 d-flex justify-content-center align-items-center flex-column">
+
+<section class="main mt-4">
   <section class="container mt-4"> 
-    <div class="productos-lista row g-4 d-flex justify-content-center align-items-center">
-
-      <div *ngFor="let dato of datosPaginados" class="producto-item col-12 col-md-0 col-lg-4">
-        <div class="product-card libro-card position-relative overflow-hidden rounded">
-
-            <img [src]="'/covers/' + dato.title + '.png'" class="img-fluid rounded-top" [alt]="dato.title" />
-            <div class="card-body p-4 text-white">
+    <div class="row g-4">
+      <div class="container d-flex justify-content-center">
+        <div class="row g-4 justify-content-center text-center mt-4">
+          <div *ngFor="let dato of datosPaginados" class="col-lg-4 d-flex justify-content-center">
+            <div 
+              class="product-card libro-card position-relative overflow-hidden rounded"
+              (click)="verDetalles(dato)"
+            >
+              <img [src]="'/covers/' + dato.title + '.png'" class="img-fluid rounded-top" [alt]="dato.title" />
+              <div class="card-body p-4 text-white">
                 <h5 class="product-title fw-bold text-white">{{ dato.title }}</h5>
                 <p class="product-seller text-white">Autor: {{ dato.author }}</p>
                 <p class="product-price fw-bold text-white">Precio: ${{ dato.price }}</p>
-                <div class=" hover-info position-absolute bottom-0 start-0 w-100 h-70 p-4 bg-dark text-white">
+                <div class="hover-info position-absolute bottom-0 start-0 w-100 h-70 p-4 bg-dark text-white">
                   <p class="text-white">{{ dato.genre1 }} y {{ dato.genre2 }}</p>
                 </div>
+              </div>
             </div>
+          </div>
         </div>
-    </div>
-
-  </div>
-  
-  <div class="d-flex justify-content-center mt-4 adelante">
-    <div class="pagination d-flex align-items-center">
-      <button class="btn btn-primary me-3" (click)="paginaAnterior()" [disabled]="paginaActual === 1">Anterior</button>
-      <div class="d-flex gap-2">
-        <button *ngFor="let pagina of [].constructor(totalPaginas); let i = index"
-                class="btn btn-outline-primary rounded-circle"
-                [class.active]="paginaActual === (i + 1)"
-                (click)="irAPagina(i + 1)">
-          {{ i + 1 }}
-        </button>
       </div>
-      <button class="btn btn-primary ms-3" (click)="siguientePagina()" [disabled]="paginaActual === totalPaginas">Siguiente</button>
     </div>
-  </div>
 
+    <div class="d-flex justify-content-center mt-4 adelante">
+      <div class="pagination d-flex align-items-center">
+        <button class="btn btn-primary me-3" (click)="paginaAnterior()" [disabled]="paginaActual === 1">Anterior</button>
+        <div class="d-flex gap-2">
+          <button *ngFor="let pagina of [].constructor(totalPaginas); let i = index"
+                  class="btn btn-outline-primary rounded-circle"
+                  [class.active]="paginaActual === (i + 1)"
+                  (click)="irAPagina(i + 1)">
+            {{ i + 1 }}
+          </button>
+        </div>
+        <button class="btn btn-primary ms-3" (click)="siguientePagina()" [disabled]="paginaActual === totalPaginas">Siguiente</button>
+      </div>
+    </div>
   </section>
-  <app-compra *ngIf="isVisible" [libro]="libroSeleccionado"></app-compra>
 </section>
 
-<!-- -->
+<div *ngIf="libroSeleccionado" class="modal fade show d-block" id="bookModal" tabindex="-1" aria-labelledby="bookModalLabel" aria-hidden="true" style="background: rgba(0, 0, 0, 0.5);">
+  <div class="modal-dialog modal-lg" style="max-width: 90%; /* Ajusta el porcentaje según el tamaño que desees */">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="btn-close" (click)="cerrarModal()"></button>
+      </div>
+      <div class="modal-body" style="background-image: url('img-fondo7.jpg'); background-size: cover; background-position: center;">
+        <app-show-info [libro]="libroSeleccionado"></app-show-info>
+      </div>
+    </div>
+  </div>
+</div>
+
