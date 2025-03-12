@@ -3,14 +3,15 @@ import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angula
 import { CredentialsService } from '../../services/auth/credentials.service';
 import { LoginInterface } from '../../services/interfaces/auth';
 import { TokenService } from '../../services/auth/token.service';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { UseStateService } from '../../services/auth/use-state.service';
 import { PopupService } from '../../services/utils/popup.service';
 
 @Component({
   selector: 'app-login',
   imports: [
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    RouterLink
   ],
   standalone: true,
   templateUrl: './login.component.html',
