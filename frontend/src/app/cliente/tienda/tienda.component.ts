@@ -4,12 +4,12 @@ import { Libro } from '../../services/models/libro.model';
 import { NgFor, NgIf } from '@angular/common';
 import { ProductService } from '../../services/service/product.service';
 import { Subscription } from 'rxjs';
-import { ShowInfoComponent } from '../show-info/show-info.component';
+import { InfoShowComponent } from '../info-show/info-show.component';
 
 @Component({
   selector: 'app-tienda',
   standalone: true,
-  imports: [NgFor, NgIf,ShowInfoComponent],
+  imports: [NgFor, NgIf,InfoShowComponent],
   templateUrl: './tienda.component.html',
   styleUrls: ['./tienda.component.scss']
 })

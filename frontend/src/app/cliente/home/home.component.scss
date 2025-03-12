@@ -133,7 +133,7 @@
     .product-seller {
         font-size: 0.875rem;
         color: #777;
-    }s
+    }
     .hover-info {
         opacity: 0;
         width: 100%;
@@ -149,6 +149,8 @@
     }
     
     .product-card:hover .hover-info {
-        opacity: 0.8;
+
+        opacity: 0.9; /* Opcional, ajusta la opacidad si lo deseas */
+        transition: visibility 0s, opacity 0.3s ease; /* Asegura que la transición de visibilidad no se retrase */
     }
 }

@@ -24,6 +24,7 @@
         <!-- Mostrar productos cuando hay datos -->
         <div *ngIf="productosDestacados.length > 0" class="productos-lista row g-4">
             <div *ngFor="let dato of productosDestacados" class="producto-item col-12 col-md-6 col-lg-4">
+
                 <div class="product-card libro-card position-relative overflow-hidden rounded">
                     <!-- Imagen del libro con el nombre dinámico -->
                     <img [src]="'/covers/' + dato.title + '.png'" class="img-fluid rounded-top" [alt]="dato.title" />
@@ -36,6 +37,7 @@
                         </div>
                     </div>
                 </div>
+                
             </div>
         </div>
     </div>

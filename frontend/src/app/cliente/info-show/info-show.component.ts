@@ -1,14 +1,14 @@
 import { Component, Input } from '@angular/core';
-import { Location, NgIf } from '@angular/common';
+import { Location, NgFor, NgIf } from '@angular/common';
 import { CarritoService } from '../../services/service/carrito.service';
 
 @Component({
-  selector: 'app-show-info',
-  imports:[NgIf],
-  templateUrl: './show-info.component.html',
-  styleUrls: ['./show-info.component.scss']
+  selector: 'app-info-show',
+  imports: [NgIf],
+  templateUrl: './info-show.component.html',
+  styleUrl: './info-show.component.scss'
 })
-export class ShowInfoComponent {
+export class InfoShowComponent {
   @Input() libro: any;  // Recibe el libro seleccionado
 
   constructor(

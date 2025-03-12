@@ -51,13 +51,13 @@
 </section>
 
 <div *ngIf="libroSeleccionado" class="modal fade show d-block" id="bookModal" tabindex="-1" aria-labelledby="bookModalLabel" aria-hidden="true" style="background: rgba(0, 0, 0, 0.5);">
-  <div class="modal-dialog modal-lg" style="max-width: 90%; /* Ajusta el porcentaje según el tamaño que desees */">
+  <div class="modal-dialog modal-lg" style="max-width: 60%; /* Ajusta el porcentaje según el tamaño que desees */">
     <div class="modal-content">
       <div class="modal-header">
-        <button type="button" class="btn-close" (click)="cerrarModal()"></button>
+          <button class="btn-close" aria-label="Close" (click)="cerrarModal()"></button>
       </div>
-      <div class="modal-body" style="background-image: url('img-fondo7.jpg'); background-size: cover; background-position: center;">
-        <app-show-info [libro]="libroSeleccionado"></app-show-info>
+      <div class="modal-body" >
+        <app-info-show [libro]="libroSeleccionado"></app-info-show>
       </div>
     </div>
   </div>

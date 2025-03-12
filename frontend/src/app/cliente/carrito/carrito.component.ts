@@ -5,12 +5,13 @@ import { RouterModule } from '@angular/router';
 
 import { environment } from '../../../environments/environment';
 import { NgFor, NgIf } from '@angular/common';
+
 // carrito.component.ts
 
 
 @Component({
   selector: 'app-carrito',
-  imports:[NgIf,NgFor],
+  imports: [NgIf, NgFor,],
   templateUrl: './carrito.component.html',
   styleUrls: ['./carrito.component.scss']
 })

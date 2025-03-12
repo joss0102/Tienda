@@ -1,56 +1,54 @@
 <!-- carrito.component.html -->
- <section class="section">
+<section class="section">
+  <div class="container cart-container py-5">
+    <h2 class="text-center mb-4 text-white">Carrito de Compras</h2>
 
-
-<div class="container cart-container py-5">
-  <h2 class="text-center mb-4 text-white">Carrito de Compras</h2>
-
-  <!-- Si hay libros en el carrito, mostrar esta sección -->
-  <div *ngIf="librosEnCarrito.length > 0; else carritoVacio">
-    <div class="row">
-      <!-- Mostrar los libros del carrito -->
-      <div class="col-md-8">
-        <ul class="list-group">
-          <li class="list-group-item d-flex justify-content-between align-items-center shadow-sm mb-3" *ngFor="let libro of librosEnCarrito">
-            <div class="d-flex align-items-center">
-              <img [src]="'/covers/' + libro.title + '.png'" class="img-fluid rounded" [alt]="libro.title" style="width: 100px; height: 150px;">
-              <div class="ms-3">
-                <h5 class="text-white fw-bold">{{ libro.title }}</h5>
-                <p class="text-white mb-1">{{ libro.author }}</p>
-                <p class="text-white">${{ libro.price }}</p>
+    <!-- Si hay libros en el carrito, mostrar esta sección -->
+    <div *ngIf="librosEnCarrito.length > 0; else carritoVacio">
+      <div class="row">
+        <!-- Mostrar los libros del carrito -->
+        <div class="col-md-8">
+          <ul class="list-group">
+            <li class="list-group-item d-flex justify-content-between align-items-center shadow-sm mb-3" *ngFor="let libro of librosEnCarrito">
+              <div class="d-flex align-items-center">
+                <img [src]="'/covers/' + libro.title + '.png'" class="img-fluid rounded" [alt]="libro.title" style="width: 100px; height: 150px;">
+                <div class="ms-3">
+                  <h5 class="text-white fw-bold">{{ libro.title }}</h5>
+                  <p class="text-white mb-1">{{ libro.author }}</p>
+                  <p class="text-white">${{ libro.price }}</p>
+                </div>
               </div>
-            </div>
-            <button class="btn btn-danger btn-sm" (click)="eliminarLibro(libro.id)">
-              <i class="fas fa-trash-alt"></i> Eliminar
-            </button>
-          </li>
-        </ul>
-      </div>
+              <button class="btn btn-danger btn-sm" (click)="eliminarLibro(libro.id)">
+                <i class="fas fa-trash-alt"></i> Eliminar
+              </button>
+            </li>
+          </ul>
+        </div>
 
-      <!-- Resumen de la compra -->
-      <div class="col-md-4">
-        <div class="card shadow-sm">
-          <div class="card-body">
-            <h5 class="card-title text-center">Resumen del Carrito</h5>
-            <hr>
-            <p class="text-muted">Total: <strong>${{ total }}</strong></p>
-            <div class="d-flex justify-content-between">
-              <button class="btn btn-warning" (click)="vaciarCarrito()">Vaciar Carrito</button>
-              <button class="btn btn-success" routerLink="/checkout">Ir a Pagar</button>
+        <!-- Resumen de la compra -->
+        <div class="col-md-4">
+          <div class="card shadow-sm">
+            <div class="card-body">
+              <h5 class="card-title text-center">Resumen del Carrito</h5>
+              <hr>
+              <p class="text-muted">Total: <strong>${{ total }}</strong></p>
+              <div class="d-flex justify-content-between">
+                <button class="btn btn-warning" (click)="vaciarCarrito()">Vaciar Carrito</button>
+                <button class="btn btn-success" routerLink="/checkout">Ir a Pagar</button>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
 
-  <!-- Si el carrito está vacío, mostrar esta sección -->
-  <ng-template #carritoVacio>
-    <div class="text-center text-white">
-      <p class="h5">Parece que aún no has agregado nada a tu carrito.</p>
-      <button class="btn btn-primary mt-3" routerLink="/tienda">Explorar Productos</button>
-      <p class="mt-4">Descubre nuestras mejores ofertas y productos exclusivos.</p>
-    </div>
-  </ng-template>
-</div>
- </section>
+    <!-- Si el carrito está vacío, mostrar esta sección -->
+    <ng-template #carritoVacio>
+      <div class="text-center text-white">
+        <p class="h5">Parece que aún no has agregado nada a tu carrito.</p>
+        <button class="btn btn-primary mt-3" routerLink="/tienda">Explorar Productos</button>
+        <p class="mt-4">Descubre nuestras mejores ofertas y productos exclusivos.</p>
+      </div>
+    </ng-template>
+  </div>
+</section>

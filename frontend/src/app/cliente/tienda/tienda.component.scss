@@ -115,9 +115,18 @@
                 border: 1px solid rgb(255, 255, 255);   /* Establece un borde de 9px */
                 border-bottom: none;          /* Elimina el borde superior */
                 border-radius: 5px 5px 0 0;
-                background-color: #4c4c4c;
+                background-color: #4e4e4e;
+                .btn-close {
+                    filter: invert(1);
+                    opacity: 1; /* Para que se vea bien */
+                }
+                .btn-close:hover{
+                    background-color: #c2c2c2;
+                }
+
             }
             .modal-body{
+                background-color: #4e4e4e;
                 border: 1px solid rgb(255, 255, 255); 
                 border-top: none;
                 border-radius: 0 0 5px 5px;

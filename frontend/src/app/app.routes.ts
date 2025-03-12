@@ -11,7 +11,8 @@ import {ControlPanelComponent} from './backoffice/control-panel/control-panel.co
 import {PageNotFoundComponent} from './page-not-found/page-not-found.component';
 import { CarritoComponent } from './cliente/carrito/carrito.component';
 import {publicGuard} from './services/guards/public.guard';
-import { ShowInfoComponent } from './cliente/show-info/show-info.component';
+
+import { InfoShowComponent } from './cliente/info-show/info-show.component';
 
 
 export const routes: Routes = [
@@ -26,7 +27,7 @@ export const routes: Routes = [
       {path: "tienda", component: TiendaComponent}, // www.ejemplo.com/tienda
       {path: "home", component: HomeComponent},
       {path: "carrito", component: CarritoComponent},
-      { path: 'show-info/:id', component: ShowInfoComponent }, // Acepta un ID
+      { path: 'show-info/:id', component: InfoShowComponent }, // Acepta un ID
     ]
   },
   // backoffice
