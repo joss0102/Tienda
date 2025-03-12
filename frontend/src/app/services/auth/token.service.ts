@@ -1,4 +1,3 @@
-// token.service.ts
 import { Injectable } from '@angular/core';
 import { CookieService } from 'ngx-cookie-service';
 import { environment } from '../../../environments/environment';
@@ -63,5 +62,21 @@ export class TokenService {
   // Verificar si el token de refresco está presente
   hasRefreshToken(): boolean {
     return !!this.getRefreshToken();  // Retorna true si hay un token de refresco
+  }
+
+  // Método para obtener el ID del usuario desde el token (asumiendo un JWT)
+  getUserId(): number {
+    const token = this.getAccessToken();
+    if (token) {
+      const decoded = this.decodeToken(token); // Método de decodificación
+      return decoded.userId;  // Suponiendo que 'userId' está en el payload del JWT
+    }
+    return 0;
+  }
+
+  // Método para decodificar el token (si es JWT)
+  private decodeToken(token: string): any {
+    const payload = token.split('.')[1];  // El payload de un JWT está en la segunda parte
+    return JSON.parse(atob(payload));  // Decodificar y parsear el payload
   }
 }

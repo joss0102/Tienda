@@ -17,13 +17,11 @@ import { Subscription } from 'rxjs';
 export class HeaderClienteComponent implements OnInit, OnDestroy {
   cantidadLibrosEnCarrito: number = 0;
   private carritoSubscription!: Subscription;
-
-  // Añadimos una propiedad para determinar si el usuario está logueado
   isLoggedIn: boolean = false;
 
   constructor(
     private carritoService: CarritoService,
-    private tokenService: TokenService,  // Inyectamos el TokenService
+    private tokenService: TokenService
   ) {}
 
   ngOnInit() {
@@ -31,7 +29,6 @@ export class HeaderClienteComponent implements OnInit, OnDestroy {
       this.cantidadLibrosEnCarrito = libros.length;
     });
 
-    // Comprobamos si el usuario está logueado
     this.isLoggedIn = this.tokenService.hasAccessToken();
   }
 
@@ -41,9 +38,8 @@ export class HeaderClienteComponent implements OnInit, OnDestroy {
     }
   }
 
-  // Método para cerrar sesión
   logout(): void {
     this.tokenService.clearTokens();
-    this.isLoggedIn = false; // Cambiamos el estado de la variable para actualizar la vista
+    this.isLoggedIn = false;
   }
 }
