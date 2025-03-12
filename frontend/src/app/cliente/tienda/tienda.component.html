@@ -1,33 +1,51 @@
-<section class="container mt-4"> 
-  <h2 class="text-center mb-4">Saga de Trono de Cristal</h2>
-  <div class="row g-4">
-    <div class="col-md-4" *ngFor="let dato of datosPaginados">
-      <div class="card shadow-sm libro-card position-relative">
-        <img [src]="'/covers/' + dato.title + '.png'" class="img-fluid rounded-top" class="card-img-top img-fluid" [alt]="dato.title">
-        <div class="card-body text-center">
-          <h5 class="card-title">{{ dato.title }}</h5>
-          <p class="card-text text-primary fw-bold">${{ dato.price }}</p>
-          <button class="btn btn-success" (click)="agregarAlCarrito(dato)">Agregar al Carrito</button>
+<section class="container mt-4">
+  <section class="book text-center text-white py-5 rounded position-relative">
+        <div class="overlay"></div>
+        <div class="book-content position-relative">
+            <h1 class="fw-bold display-4">Los mejores libros en tu lugar de confianza</h1>
+            <p class="lead fs-5">Explora, descubre y sumérgete en los libros del momento.</p>
         </div>
-        <div class="hover-genre">
-          <p class="text-white">{{ dato.genre1 }} y {{ dato.genre2 }}</p>
+    </section>
+</section>
+  
+<section class="main mt-4 d-flex justify-content-center align-items-center flex-column">
+  <section class="container mt-4"> 
+    <div class="productos-lista row g-4 d-flex justify-content-center align-items-center">
+
+      <div *ngFor="let dato of datosPaginados" class="producto-item col-12 col-md-0 col-lg-4">
+        <div class="product-card libro-card position-relative overflow-hidden rounded">
+
+            <img [src]="'/covers/' + dato.title + '.png'" class="img-fluid rounded-top" [alt]="dato.title" />
+            <div class="card-body p-4 text-white">
+                <h5 class="product-title fw-bold text-white">{{ dato.title }}</h5>
+                <p class="product-seller text-white">Autor: {{ dato.author }}</p>
+                <p class="product-price fw-bold text-white">Precio: ${{ dato.price }}</p>
+                <div class=" hover-info position-absolute bottom-0 start-0 w-100 h-70 p-4 bg-dark text-white">
+                  <p class="text-white">{{ dato.genre1 }} y {{ dato.genre2 }}</p>
+                </div>
+            </div>
         </div>
+    </div>
+
+  </div>
+  
+  <div class="d-flex justify-content-center mt-4 adelante">
+    <div class="pagination d-flex align-items-center">
+      <button class="btn btn-primary me-3" (click)="paginaAnterior()" [disabled]="paginaActual === 1">Anterior</button>
+      <div class="d-flex gap-2">
+        <button *ngFor="let pagina of [].constructor(totalPaginas); let i = index"
+                class="btn btn-outline-primary rounded-circle"
+                [class.active]="paginaActual === (i + 1)"
+                (click)="irAPagina(i + 1)">
+          {{ i + 1 }}
+        </button>
       </div>
+      <button class="btn btn-primary ms-3" (click)="siguientePagina()" [disabled]="paginaActual === totalPaginas">Siguiente</button>
     </div>
   </div>
-  
-  <div class="d-flex justify-content-center mt-4 adelante"  >
-    <div class="pagination">
-  <button class="btn btn-primary" (click)="paginaAnterior()" [disabled]="paginaActual === 1">
-      Anterior
-    </button>
-      <span class="mx-3">Página {{ paginaActual }} de {{ totalPaginas }}</span>
-      <button class="btn btn-primary" (click)="siguientePagina()" [disabled]="paginaActual === totalPaginas">
-        Siguiente
-      </button>
-    </div>
-  
-  </div>
+
+  </section>
+  <app-compra *ngIf="isVisible" [libro]="libroSeleccionado"></app-compra>
 </section>
 
-<app-compra *ngIf="isVisible" [libro]="libroSeleccionado"></app-compra>
+<!-- -->

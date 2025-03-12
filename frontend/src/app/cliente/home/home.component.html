@@ -22,21 +22,21 @@
         </div>
 
         <!-- Mostrar productos cuando hay datos -->
-        <ul *ngIf="productosDestacados.length > 0" class="productos-lista row g-4">
-            <li *ngFor="let dato of productosDestacados" class="producto-item col-12 col-md-6 col-lg-4">
+        <div *ngIf="productosDestacados.length > 0" class="productos-lista row g-4">
+            <div *ngFor="let dato of productosDestacados" class="producto-item col-12 col-md-6 col-lg-4">
                 <div class="product-card libro-card position-relative overflow-hidden rounded">
                     <!-- Imagen del libro con el nombre dinámico -->
                     <img [src]="'/covers/' + dato.title + '.png'" class="img-fluid rounded-top" [alt]="dato.title" />
-                    <div class="card-body p-4">
-                        <h5 class="product-title fw-bold">{{ dato.title }}</h5>
-                        <p class="product-price text-primary fw-bold">Precio: ${{ dato.price }}</p>
-                        <p class="product-seller text-muted">Vendedor: {{ dato.seller.username }}</p>
+                    <div class="card-body p-4 text-white">
+                        <h5 class="product-title fw-bold text-white">{{ dato.title }}</h5>
+                        <p class="product-seller text-white">Autor: {{ dato.author }}</p>
+                        <p class="product-price fw-bold text-white">Precio: ${{ dato.price }}</p>
                         <div class=" hover-info position-absolute bottom-0 start-0 w-100 h-70 p-4 bg-dark text-white">
                             <p class="description px-3">{{ dato.description }}</p>
                         </div>
                     </div>
                 </div>
-            </li>
-        </ul>
+            </div>
+        </div>
     </div>
 </section>

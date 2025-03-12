@@ -9,8 +9,7 @@ import { CompraComponent } from '../tabs/compra/compra.component'; // Importa Co
 @Component({
   selector: 'app-tienda',
   standalone: true,
-  imports: [NgFor, NgIf,CompraComponent],
-
+  imports: [NgFor, NgIf, CompraComponent],
   templateUrl: './tienda.component.html',
   styleUrls: ['./tienda.component.scss']
 })
@@ -59,6 +58,13 @@ export class TiendaComponent implements OnInit, OnDestroy {
   paginaAnterior() {
     if (this.paginaActual > 1) {
       this.paginaActual--;
+      this.cargarLibros();
+    }
+  }
+
+  irAPagina(pagina: number) {
+    if (pagina >= 1 && pagina <= this.totalPaginas) {
+      this.paginaActual = pagina;
       this.cargarLibros();
     }
   }
