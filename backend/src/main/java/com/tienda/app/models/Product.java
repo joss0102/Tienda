@@ -22,6 +22,10 @@ public class Product {
 
     private Currency currency;
 
+
+    private String genre1;
+    private String genre2;
+
     @Lob
     private String description;
 
@@ -42,7 +46,7 @@ public class Product {
     private String author;
 
     @Column(nullable = false)
-    private Integer popularity;  // Cambiado a Integer
+    private Integer popularity;
 
     // Métodos setter
     public void setPopularity(Integer popularity) {
@@ -79,6 +83,13 @@ public class Product {
 
     public void setCurrency(Currency currency) {
         this.currency = currency;
+    }
+
+    public void setGenre1(String genre1) {
+        this.genre1 = genre1;
+    }
+    public void setGenre2(String genre2) {
+        this.genre2 = genre2;
     }
 
     public void setCreatedAt(LocalDateTime createdAt) {

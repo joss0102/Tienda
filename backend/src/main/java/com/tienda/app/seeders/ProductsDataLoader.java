@@ -21,6 +21,8 @@ public class ProductsDataLoader implements CommandLineRunner {
     @Autowired
     private UserRepository userRepository;  // Inyectamos el UserRepository para acceder a los usuarios
 
+
+
     @Override
     public void run(String... args) throws Exception {
 
@@ -31,266 +33,81 @@ public class ProductsDataLoader implements CommandLineRunner {
             throw new Exception("No se encontraron usuarios");
         }
 
-        // Usamos el primer usuario de la lista como vendedor
+        // Usamos el primer y segundo usuario como vendedores
         User user1 = users.get(0);
         User user2 = users.get(1);
 
-        // Insertar productos (TOG)
-        Product product1 = new Product();
-        product1.setTitle("Trono de cristal");
-        product1.setAuthor("Sarah J. Maas");
-        product1.setDescription("");
-        product1.setPrice(BigDecimal.valueOf(22.99));
-        product1.setTax(21.0);
-        product1.setCurrency(Currency.USD);
-        product1.setSeller(user1);
-        product1.setPopularity(3);
-        productRepository.save(product1);
 
-        Product product2 = new Product();
-        product2.setTitle("Corona de medianoche");
-        product2.setAuthor("Sarah J. Maas");
-        product2.setDescription("Romance y misterio");
-        product2.setPrice(BigDecimal.valueOf(22.50));
-        product2.setTax(21.0);
-        product2.setCurrency(Currency.USD);
-        product2.setSeller(user1);
-        product2.setPopularity(3);
-        productRepository.save(product2);
 
-        Product product3 = new Product();
-        product3.setTitle("La espada de la asesina");
-        product3.setAuthor("Sarah J. Maas");
-        product3.setDescription("Romance y misterio");
-        product3.setPrice(BigDecimal.valueOf(23.99));
-        product3.setTax(21.0);
-        product3.setCurrency(Currency.USD);
-        product3.setSeller(user1);
-        product3.setPopularity(4);
-        productRepository.save(product3);
+        // Insertar productos
+        saveProduct(user1, "Trono de cristal", "Sarah J. Maas", "Fantasia", "Romance",BigDecimal.valueOf(22.99), 21.0, Currency.EUR, 3,
+                "En las tenebrosas minas de sal de Endovier, una muchacha de dieciocho años cumple cadena perpetua. Es una asesina profesional, la mejor en lo suyo, pero ha cometido un error fatal. La han capturado. El joven capitán Westfall le ofrece un trato: la libertad a cambio de un enorme sacrificio. Celaena debe representar al príncipe en un torneo a muerte, en el que deberá luchar con los asesinos y ladrones más peligrosos del reino. Viva o muerta, Celaena será libre.");
+        saveProduct(user1, "Corona de medianoche", "Sarah J. Maas", "Fantasia", "Romance",BigDecimal.valueOf(22.50), 21.0, Currency.EUR, 3,
+                "Celaena Sardothien se ha convertido en la campeona del rey, aunque dista mucho de ser leal a la Corona. El rey es perverso, y Celaena, atrapada en la red de intrigas y misterios del castillo de cristal, no puede confiar en nadie, ni siquiera en el príncipe Dorian, en el capitán de la guardia, Chaol, o en su amiga, la princesa Nehemia. Cuando algo absolutamente inesperado suceda, Celaena se verá obligada a decidir de una vez por todas a quién ofrecerle su lealtad… y por quién luchar.");
+        saveProduct(user1, "La espada de la asesina", "Sarah J. Maas", "Fantasia", "Romance",BigDecimal.valueOf(23.99), 21.0, Currency.EUR, 4,
+                "Celaena Sardothien es la asesina más temida de Adarlan. Como parte del Gremio de Asesinos, ha jurado proteger a su maestro, Arobynn Hamel, pero Celaena no escucha a nadie y solo confía en su amigo Sam.");
 
-        Product product4 = new Product();
-        product4.setTitle("Heredera de fuego");
-        product4.setAuthor("Sarah J. Maas");
-        product4.setDescription("Fantaía y romance");
-        product4.setPrice(BigDecimal.valueOf(24.99));
-        product4.setTax(21.0);
-        product4.setCurrency(Currency.USD);
-        product4.setSeller(user2);
-        product4.setPopularity(6);
-        productRepository.save(product4);
+        saveProduct(user2, "Heredera de fuego", "Sarah J. Maas", "Fantasia", "Romance",BigDecimal.valueOf(24.99), 21.0, Currency.EUR, 6,
+                "Como asesina del rey, Celaena Sardothien está obligada a servir al tirano que asesinó a su mejor amiga. Pero se ha prometido a sí misma que se lo hará pagar. Las respuestas que Celaena necesita para destruir al rey se encuentran más allá del mar, en Wendlyn. Y Chaol, capitán de la guardia real, ha puesto su futuro en peligro al enviarla allí.");
+        saveProduct(user2, "Reina de sombras", "Sarah J. Maas", "Fantasia", "Romance",BigDecimal.valueOf(25.99), 21.0, Currency.EUR, 8,
+                "Toda la gente a la que Celaena Sardothien amaba le ha sido arrebatada. Pero al fin ha regresado al imperio… por venganza y para rescatar al que en su día fue un glorioso reino, además de para enfrentarse a las sombras de su pasado… Ha llegado la hora de luchar por su gente, esclavizada por un brutal rey y a la espera del regreso triunfal de su reina perdida.");
+        saveProduct(user2, "Imperio de tormentas", "Sarah J. Maas", "Fantasia", "Romance",BigDecimal.valueOf(26.99), 21.0, Currency.EUR, 8,
+                "El largo camino hasta el trono tan solo ha comenzado. Aelin ha perdido y ganado amigos, ha sufrido traiciones y comprado alianzas. Ahora deberá profundizar en sus poderes si quiere ser capaz de proteger a aquellos a los que ama. Pero a medida que resurgen monstruos de su pasado y las fuerzas oscuras parecen decididas a conquistar su mundo, su única posibilidad de salvación depende de una aventura que podría hacer que Aelin lo pierda todo. ¿Qué deberá sacrificar para mantener su mundo a salvo?");
+        saveProduct(user2, "Torre del alba", "Sarah J. Maas", "Fantasia", "Romance",BigDecimal.valueOf(26.99), 21.0, Currency.EUR, 5,
+                "Chaol Westfall siempre se había definido a sí mismo por su inquebrantable lealtad y su puesto como capitán de la guardia. Pero todo cambió cuando el castillo de cristal fue destruido, cuando sus hombres fueron masacrados, cuando el rey de Adarlan estuvo a punto de matarlo.");
+        saveProduct(user2, "Reino de cenizas", "Sarah J. Maas", "Fantasia", "Romance",BigDecimal.valueOf(27.99), 21.0, Currency.EUR, 10,
+                "Aelin lo ha arriesgado todo para salvar a su gente, pero el coste ha sido tremendo. Encerrada dentro de un ataúd de hierro por la reina de las hadas, Aelin deberá usar su inquebrantable voluntad para soportar meses de tortura. Ceder ante Maeve condenaría a aquellos a los que quiere, y por eso resiste, pero le cuesta más cada día que pasa…");
 
-        Product product5 = new Product();
-        product5.setTitle("Reina de sombras");
-        product5.setAuthor("Sarah J. Maas");
-        product5.setDescription("Fantaía y romance");
-        product5.setPrice(BigDecimal.valueOf(25.99));
-        product5.setTax(21.0);
-        product5.setCurrency(Currency.USD);
-        product5.setSeller(user2);
-        product5.setPopularity(7);
-        productRepository.save(product5);
+        saveProduct(user1, "Alas de Sangre", "Rebecca Yarros", "Fantasia", "Dragones",BigDecimal.valueOf(21.99), 21.0, Currency.EUR, 6,
+                "Violet Sorrengail creía que se uniría al Cuadrante de los Escribas para vivir una vida tranquila, sin embargo, por órdenes de su madre, debe unirse a los miles de candidatos que, en el Colegio de Guerra de Basgiath, luchan por formar parte de la élite de Navarre: el Cuadrante de los Jinetes de dragones.");
+        saveProduct(user1, "Alas de Hierro", "Rebecca Yarros", "Fantasia", "Dragones",BigDecimal.valueOf(21.99), 21.0, Currency.EUR, 7,
+                "Todos esperaban que Violet Sorrengail muriera durante su primer año en el Colegio de Guerra Basgiath, incluso ella misma. Pero la Trilla fue tan solo la primera de una serie de pruebas imposibles destinadas a deshacerse de los indignos y los desafortunados.");
+        saveProduct(user1, "Alas de Onix", "Rebecca Yarros", "Fantasia", "Dragones",BigDecimal.valueOf(21.99), 21.0, Currency.EUR, 6,
+                "Tras casi dieciocho meses en el Colegio de Guerra Basgiath, Violet Sorrengail tiene claro que no queda tiempo para entrenar. Hay que tomar decisiones. La batalla ha comenzado y, con enemigos acercándose a las murallas e infiltrados en sus propias filas, es imposible saber en quién confiar.");
 
-        Product product6 = new Product();
-        product6.setTitle("Imperio de tormentas");
-        product6.setAuthor("Sarah J. Maas");
-        product6.setDescription("Fantaía y romance");
-        product6.setPrice(BigDecimal.valueOf(26.99));
-        product6.setTax(21.0);
-        product6.setCurrency(Currency.USD);
-        product6.setSeller(user2);
-        product6.setPopularity(8);
-        productRepository.save(product6);
+        saveProduct(user2, "El imperio del vampiro", "Jay Kristoff", "Alta fantasia", "Vampiros",BigDecimal.valueOf(22.99), 21.0, Currency.EUR, 7,
+                "Durante casi tres décadas, los vampiros han luchado contra los humanos, cimentando su imperio eterno mientras el nuestro se desangraba. Ahora los que sobrevivimos somos solo unas chispas de luz en un mar de oscuridad creciente. Gabriel de León es el último miembro de la Orden de Plata, dedicada a defender el reino y la iglesia antes de que los arrasaran. Su destrucción fue imparable cuando la luz del día nos abandonó.");
+        saveProduct(user2, "El imperio de los condenados", "Jay Kristoff", "Alta fantasia","Vampiros", BigDecimal.valueOf(21.99), 21.0, Currency.EUR, 7,
+                "Gabriel de León ha perdido la oportunidad de acabar con la noche sin fin. Ahora, embarcado en una incierta alianza con una vampira, se propone recurrir a la enigmática estirpe Esani para averiguar cómo deshacer la muerte de los días...");
 
-        Product product7 = new Product();
-        product7.setTitle("Torre del alba");
-        product7.setAuthor("Sarah J. Maas");
-        product7.setDescription("Fantaía y romance");
-        product7.setPrice(BigDecimal.valueOf(26.99));
-        product7.setTax(21.0);
-        product7.setCurrency(Currency.USD);
-        product7.setSeller(user2);
-        product7.setPopularity(5);
-        productRepository.save(product7);
+        saveProduct(user2, "Una corte de rosas y espinas", "Lauren Roberts", "Romantasy","Faes", BigDecimal.valueOf(15.99), 21.0, Currency.EUR, 7,
+                "Cuando la cazadora Feyre mata a un lobo en el bosque, una criatura bestial irrumpe en su casa para exigir una compensación. Así, es trasladada a una tierra mágica y engañosa de la que solo había oído hablar en las leyendas, donde Feyre descubre que su captor no es un animal sino Tamlin: una divinidad inmortal y letal que alguna vez reinó en su mundo.");
+        saveProduct(user2, "Una corte de niebla y furia", "Lauren Roberts", "Romantasy","Faes", BigDecimal.valueOf(16.99), 21.0, Currency.EUR, 7,
+                "Tras haber superado más pruebas de las que un corazón humano puede soportar, Feyre regresa a la Corte Primavera con los poderes de una alta fae. Sin embargo, no consigue olvidar los crímenes que se vio obligada a cometer para salvar a Tamlin y a su pueblo, ni el perverso pacto que forjó con Rhysand, el alto lord de la temible Corte Noche.");
+        saveProduct(user2, "Una corte de alas y ruina", "Lauren Roberts", "Romantasy", "Faes",BigDecimal.valueOf(17.99), 21.0, Currency.EUR, 7,
+                "Feyre regresa a la Corte Primavera, decidida a reunir información sobre los planes de Tamlin y del rey invasor que amenaza con destruir Prythian. Para esto deberá formar parte de un peligroso, e incluso letal, juego de engaño. Un juego en el que un simple error podría condenar no solo a Feyre sino también a todo el mundo a su alrededor.");
+        saveProduct(user2, "Una corte de hielo y estrellas", "Lauren Roberts", "Romantasy", "Faes",BigDecimal.valueOf(16.99), 21.0, Currency.EUR, 7,
+                "Feyre, Rhys y su círculo más íntimo de amigos están muy ocupados reconstruyendo la Corte Noche y el vasto mundo que la rodea. Pero el solsticio de invierno finalmente se acerca, y con él, parece que llegará cierto alivio ganado con mucho esfuerzo. No obstante, esta atmósfera alegre y festiva no conseguirá detener las sombras del pasado que acechan sin dar tregua.");
+        saveProduct(user2, "Una corte de llamas plateadas", "Lauren Roberts", "Romantasy","Faes", BigDecimal.valueOf(18.99), 21.0, Currency.EUR, 7,
+                "Desde que fue forzada a meterse en el Caldero y se convirtió en alta fae en contra de su voluntad, Nesta Archeron lucha por encontrar su propio lugar dentro del extraño y letal mundo en el que habita. A su temperamento irascible se suma la dificultad para superar los horrores de la guerra con Hybern y todo lo que perdió en ella.");
 
-        Product product8 = new Product();
-        product8.setTitle("Reino de cenizas");
-        product8.setAuthor("Sarah J. Maas");
-        product8.setDescription("Aelin lo ha arriesgado todo para salvar a su gente, pero el coste ha sido tremendo. Encerrada dentro de un ataúd de hierro por la reina de las hadas, Aelin deberá usar su inquebrantable voluntad para soportar meses de tortura. Ceder ante Maeve condenaría a aquellos a los que quiere, y por eso resiste, pero le cuesta más cada día que pasa… ");
-        product8.setPrice(BigDecimal.valueOf(27.99));
-        product8.setTax(21.0);
-        product8.setCurrency(Currency.USD);
-        product8.setSeller(user2);
-        product8.setPopularity(10);
-        productRepository.save(product8);
+        saveProduct(user1, "De sangre y cenizas", "Jennifer Armentrout", "Romantasy", "Dioses",BigDecimal.valueOf(18.99), 21.0, Currency.EUR, 7,
+                "Elegida desde su nacimiento para dar comienzo a una nueva era, la vida de Poppy nunca le ha pertenecido. La vida de la Doncella es solitaria. Jamás la tocarán. Jamás la mirarán. Jamás le hablarán. Jamás sentirá placer. Mientras espera el día de su Ascensión, preferiría estar con los guardias luchando contra el mal que se llevó a su familia que preparándose para que los dioses la encuentren lo bastante digna. Pero la elección nunca ha sido suya.");
+        saveProduct(user1, "La guerra de las dos reinas", "Jennifer Armentrout", "Romantasy", "Dioses",BigDecimal.valueOf(18.99), 21.0, Currency.EUR, 7,
+                "Nada podrá evitar que Poppy libere a su Rey y destruya todo lo que la Corona de Sangre representa. Con la fuerza de los guardias y el apoyo de los wolven, Poppy debe convencer a los generales de Atlantia de luchar a su manera, porque esta vez no puede haber retirada. No si ella mantiene la esperanza de construir un futuro en el que los dos reinos puedan convivir en paz.");
+        saveProduct(user1, "Un alma de ceniza y sangre", "Jennifer Armentrout", "Romantasy","Dioses", BigDecimal.valueOf(19.99), 21.0, Currency.EUR, 7,
+                "La Reina de Carne y Fuego se ha convertido en la Primigenia de Sangre y Hueso, la verdadera Primigenia de la Vida y la Muerte. Y la batalla que Casteel, Poppy y sus aliados han estado librando solo acaba de empezar. Los dioses se están despertando por todo Iliseeum y en el mundo mortal, preparándose para la guerra que se avecina.");
+        saveProduct(user1, "Un reino de carne y fuego", "Jennifer Armentrout", "Romantasy","Dioses", BigDecimal.valueOf(19.99), 21.0, Currency.EUR, 7,
+                "Todo lo que ha creído Poppy es mentira, incluido el hombre del que se estaba enamorando. Rodeada de pronto por gente que la ve como un símbolo de un reino monstruoso, apenas sabe quién es sin el velo de la Doncella. Pero lo que sí sabe es que nada es tan peligroso para ella como él. El Señor Oscuro. El príncipe de Atlantia.");
+        saveProduct(user1, "Una corona de huesos dorados", "Jennifer Armentrout", "Romantasy","Dioses", BigDecimal.valueOf(20.99), 22.0, Currency.USD, 7,
+                "Poppy jamás soñó que encontraría el amor que ha encontrado con el príncipe Casteel. Le gustaría disfrutar de su felicidad, pero primero deben liberar al hermano de Casteel y encontrar al suyo. Es una misión peligrosa y una de enormes consecuencias con las que ninguno de los dos había soñado. Porque Poppy es la Elegida, la Bendecida. La verdadera regente de Atlantia. Lleva en su interior la sangre del rey de los dioses. Por derecho propio, la corona y el reino son suyos.");
+    }
 
-        // Insertar productos (alas de sangre)
-        Product product9 = new Product();
-        product9.setTitle("Alas de Sangre");
-        product9.setAuthor("Rebecca Yarros");
-        product9.setDescription("Dragones");
-        product9.setPrice(BigDecimal.valueOf(21.99));
-        product9.setTax(21.0);
-        product9.setCurrency(Currency.USD);
-        product9.setSeller(user1);
-        product9.setPopularity(6);
-        productRepository.save(product9);
 
-        Product product10 = new Product();
-        product10.setTitle("Alas de Hierro");
-        product10.setAuthor("Rebecca Yarros");
-        product10.setDescription("Dragones");
-        product10.setPrice(BigDecimal.valueOf(21.99));
-        product10.setTax(21.0);
-        product10.setCurrency(Currency.USD);
-        product10.setSeller(user1);
-        product10.setPopularity(7);
-        productRepository.save(product10);
 
-        Product product11 = new Product();
-        product11.setTitle("Alas de Onix");
-        product11.setAuthor("Rebecca Yarros");
-        product11.setDescription("Dragones");
-        product11.setPrice(BigDecimal.valueOf(21.99));
-        product11.setTax(21.0);
-        product11.setCurrency(Currency.USD);
-        product11.setSeller(user1);
-        product11.setPopularity(6);
-        productRepository.save(product11);
 
-        // Insertar productos (imperio del vampiro)
-        Product product12 = new Product();
-        product12.setTitle("El imperio del vampiro");
-        product12.setAuthor("Jay Kristoff");
-        product12.setDescription("Vampiros");
-        product12.setPrice(BigDecimal.valueOf(22.99));
-        product12.setTax(21.0);
-        product12.setCurrency(Currency.USD);
-        product12.setSeller(user2);
-        product12.setPopularity(7);
-        productRepository.save(product12);
-
-        Product product13 = new Product();
-        product13.setTitle("El imperio de los condenados");
-        product13.setAuthor("Jay Kristoff");
-        product13.setDescription("Vampiros");
-        product13.setPrice(BigDecimal.valueOf(21.99));
-        product13.setTax(21.0);
-        product13.setCurrency(Currency.USD);
-        product13.setSeller(user2);
-        product13.setPopularity(7);
-        productRepository.save(product13);
-
-        // Insertar productos (ACOTAR)
-        Product product14 = new Product();
-        product14.setTitle("Una corte de rosas y espinas");
-        product14.setAuthor("Lauren Roberts");
-        product14.setDescription("Fantaía y romance");
-        product14.setPrice(BigDecimal.valueOf(15.99));
-        product14.setTax(21.0);
-        product14.setCurrency(Currency.USD);
-        product14.setSeller(user2);
-        product14.setPopularity(7);
-        productRepository.save(product14);
-
-        Product product15 = new Product();
-        product15.setTitle("Una corte de niebla y furia");
-        product15.setAuthor("Lauren Roberts");
-        product15.setDescription("Fantaía y romance");
-        product15.setPrice(BigDecimal.valueOf(16.99));
-        product15.setTax(21.0);
-        product15.setCurrency(Currency.USD);
-        product15.setSeller(user2);
-        product15.setPopularity(7);
-        productRepository.save(product15);
-
-        Product product16 = new Product();
-        product16.setTitle("Una corte de alas y ruina");
-        product16.setAuthor("Lauren Roberts");
-        product16.setDescription("Fantaía y romance");
-        product16.setPrice(BigDecimal.valueOf(17.99));
-        product16.setTax(21.0);
-        product16.setCurrency(Currency.USD);
-        product16.setSeller(user2);
-        product16.setPopularity(7);
-        productRepository.save(product16);
-
-        Product product17 = new Product();
-        product17.setTitle("Una corte de hielo y estrellas");
-        product17.setAuthor("Lauren Roberts");
-        product17.setDescription("Fantaía y romance");
-        product17.setPrice(BigDecimal.valueOf(16.99));
-        product17.setTax(21.0);
-        product17.setCurrency(Currency.USD);
-        product17.setSeller(user2);
-        product17.setPopularity(7);
-        productRepository.save(product17);
-
-        Product product18 = new Product();
-        product18.setTitle("Una corte de llamas plateadas");
-        product18.setAuthor("Lauren Roberts");
-        product18.setDescription("Fantaía y romance");
-        product18.setPrice(BigDecimal.valueOf(18.99));
-        product18.setTax(21.0);
-        product18.setCurrency(Currency.USD);
-        product18.setSeller(user2);
-        product18.setPopularity(7);
-        productRepository.save(product18);
-
-        // Insertar productos (ACOTAR)
-        Product product19 = new Product();
-        product19.setTitle("De sangre y cenizas");
-        product19.setAuthor("Jennifer Armentrout");
-        product19.setDescription("Dioses y monstruos");
-        product19.setPrice(BigDecimal.valueOf(18.99));
-        product19.setTax(21.0);
-        product19.setCurrency(Currency.USD);
-        product19.setSeller(user1);
-        product19.setPopularity(7);
-        productRepository.save(product19);
-
-        Product product20 = new Product();
-        product20.setTitle("La guerra de las dos reinas");
-        product20.setAuthor("Jennifer Armentrout");
-        product20.setDescription("Dioses y monstruos");
-        product20.setPrice(BigDecimal.valueOf(18.99));
-        product20.setTax(21.0);
-        product20.setCurrency(Currency.USD);
-        product20.setSeller(user1);
-        product20.setPopularity(7);
-        productRepository.save(product20);
-
-        Product product21 = new Product();
-        product21.setTitle("Un alma de ceniza y sangre");
-        product21.setAuthor("Jennifer Armentrout");
-        product21.setDescription("Dioses y monstruos");
-        product21.setPrice(BigDecimal.valueOf(19.99));
-        product21.setTax(21.0);
-        product21.setCurrency(Currency.USD);
-        product21.setSeller(user1);
-        product21.setPopularity(7);
-        productRepository.save(product21);
-
-        Product product22 = new Product();
-        product22.setTitle("Un reino de carne y fuego");
-        product22.setAuthor("Jennifer Armentrout");
-        product22.setDescription("Dioses y monstruos");
-        product22.setPrice(BigDecimal.valueOf(19.99));
-        product22.setTax(21.0);
-        product22.setCurrency(Currency.USD);
-        product22.setSeller(user1);
-        product22.setPopularity(7);
-        productRepository.save(product22);
-
-        Product product23 = new Product();
-        product23.setTitle("Una corona de huesos dorados");
-        product23.setAuthor("Jennifer Armentrout");
-        product23.setDescription("Dioses y monstruos");
-        product23.setPrice(BigDecimal.valueOf(20.99));
-        product23.setTax(21.0);
-        product23.setCurrency(Currency.USD);
-        product23.setSeller(user1);
-        product23.setPopularity(7);
-        productRepository.save(product23);
+    private void saveProduct(User seller, String title, String author, String genre1,String genre2, BigDecimal price, double tax, Currency currency, int popularity,String description) {
+        Product product = new Product();
+        product.setTitle(title);
+        product.setAuthor(author);
+        product.setDescription(description);
+        product.setGenre1(genre1);
+        product.setGenre2(genre2);
+        product.setPrice(price);
+        product.setTax(tax);
+        product.setCurrency(currency);
+        product.setSeller(seller);
+        product.setPopularity(popularity);
+        productRepository.save(product);
     }
 }

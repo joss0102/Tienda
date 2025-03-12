@@ -9,6 +9,6 @@ import java.util.Optional;
 @Repository
 public interface UserInfoRepository extends JpaRepository<UserInfo, Long> {
 
+    // Método para buscar la información de usuario por su id de usuario
     Optional<UserInfo> findByUserId(Long userId);
-
 }

@@ -14,6 +14,7 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   datos: any[] = [];  // Aquí guardaremos los productos obtenidos
   productosDestacados: any[] = [];  // Guardaremos los tres productos más populares
+  
   private datosSubscription!: Subscription;  // Subscription para manejar la suscripción a los productos
 
   constructor(private productService: ProductService) { }
