@@ -1,1 +1,37 @@
-<p>pay works!</p>
+<div class="modal-backdrop" *ngIf="librosEnCarrito.length > 0" (click)="cerrarModal()"></div>
+
+<div class="modal-container">
+    <div class="modal-header">
+        <h2>Confirmar Pago</h2>
+    </div>
+    
+    <div class="modal-body">
+        <div class="book-list">
+            <div *ngFor="let libro of librosEnCarrito" class="book-item">
+                <p><strong>{{ libro.title }}</strong> - {{ libro.price }} {{ libro.currency }}</p>
+            </div>
+        </div>
+
+        <h4>Detalles de Envío</h4>
+        <form (submit)="procesarPago()">
+            <label for="nombre">Nombre:</label>
+            <input id="nombre" type="text" required>
+
+            <label for="direccion">Dirección de Envío:</label>
+            <input id="direccion" type="text" required>
+
+            <label for="tarjeta">Número de Tarjeta:</label>
+            <input id="tarjeta" type="text" required>
+
+            <div class="button-group">
+                <button type="submit" class="btn btn-primary">Pagar</button>
+                <button type="button" class="btn btn-secondary" (click)="cerrarModal()">Cancelar</button>
+            </div>
+        </form>
+
+        <!-- Mostrar el total de la compra -->
+        <div class="total">
+            <h4>Total a Pagar: {{ totalCompra }} {{ librosEnCarrito[0].currency }}</h4>
+        </div>
+    </div>
+</div>

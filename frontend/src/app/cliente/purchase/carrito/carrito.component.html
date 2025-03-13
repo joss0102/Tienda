@@ -1,4 +1,3 @@
-<!-- carrito.component.html -->
 <section class="section">
   <div class="container cart-container py-5">
     <h2 class="text-center mb-4 text-white">Carrito de Compras</h2>
@@ -15,7 +14,7 @@
                 <div class="ms-3">
                   <h5 class="text-white fw-bold">{{ libro.title }}</h5>
                   <p class="text-white mb-1">{{ libro.author }}</p>
-                  <p class="text-white">${{ libro.price }}</p>
+                  <p class="text-white">{{ libro.price }} {{ libro.currency }}</p>
                 </div>
               </div>
               <button class="btn btn-danger btn-sm" (click)="eliminarLibro(libro.id)">
@@ -31,10 +30,14 @@
             <div class="card-body">
               <h5 class="card-title text-center">Resumen del Carrito</h5>
               <hr>
-              <p class="text-muted">Total: <strong>${{ total }}</strong></p>
+              <p class="text-muted">Total: <strong>{{ total }} {{ librosEnCarrito[0].currency }}</strong></p>
               <div class="d-flex justify-content-between">
                 <button class="btn btn-warning" (click)="vaciarCarrito()">Vaciar Carrito</button>
-                <button class="btn btn-success" routerLink="/checkout">Ir a Pagar</button>
+                <button class="btn btn-success" (click)="abrirModalPago()">Ir a Pagar</button>
+
+                <!-- Modal de pago -->
+<!-- Modal de pago, pasamos el total al PayComponent -->
+<app-pay *ngIf="mostrarModalPago" (cerrar)="cerrarModalPago()" [totalCompra]="total"></app-pay>
               </div>
             </div>
           </div>
