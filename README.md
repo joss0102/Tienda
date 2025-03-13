@@ -40,7 +40,20 @@ Este proyecto es una aplicación web que se divide en dos partes principales:
 1. Clona el repositorio:
 
     ```bash
-    git clone <url-del-repositorio>
+    git clone https://github.com/joss0102/Tienda.git
+    ```
+2. Ve a la carpeta del front
+
+    ```bash
+    cd frontend
+    ```
+3. Instala las dependencias necesarias:
+    ```bash
+    npm install
     ```
 
+4. ejecuta la aplicación localmente con angular:
+    ```bash
+    ng serve
+    ```
 

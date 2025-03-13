@@ -30,39 +30,27 @@ Los administradores pueden gestionar y analizar los libros leídos por los usuar
   - Visualización de estadísticas sobre los libros que los usuarios han leído, cómo han interactuado con ellos, y qué libros son los más populares.
 
 
-## Instalacion de dependencias y arranque de servidor
-
-1. Instala las dependencias necesarias:
-    ```bash
-    npm install
-    ```
-
-3. Ejecuta la aplicación localmente con angular:
-    ```bash
-    ng serve
-    ```
-
 
 ## Requisitos Mínimos
 
 ### 1. Backoffice (Panel de Administración)
 - El backoffice debe contar con las siguientes secciones:
-  - Página principal: Vista general de administración.
-  - Página de perfil: Información del usuario y opción para modificar contraseña (puede estar en la misma página de perfil).
-  - Página de ver mis productos: Listado de productos creados por el usuario, con opción para añadir y eliminar productos.
+  - [🟡control-panel] Página principal: Vista general de administración.
+  - [🔴profile] Página de perfil: Información del usuario y opción para modificar contraseña.
+  - [🔴my-products] Página de ver mis productos: Listado de productos creados por el usuario, con opción para añadir y eliminar productos.
 
 ### 2. Página del Cliente
 
 - El sistema debe contar con una interfaz para los clientes, con las siguientes páginas:
-  - Página principal: Home de la tienda.
-  - Página de login: Ingreso de usuarios.
-  - Página de registro: Creación de cuenta.
-  - Página de ver productos: Listado de productos disponibles.
-  - Página de descripción del producto: Información detallada de cada producto.
-  - Página de checkout: Proceso de compra, incluyendo dirección de envío y pago con tarjeta de crédito u otros métodos.
+  - [🟢Home] Página principal: Home de la tienda.
+  - [🟢Login] Página de login: Ingreso de usuarios.
+  - [🔴Registro] Página de registro: Creación de cuenta.
+  - [🟢Tienda] Página de ver productos: Listado de productos disponibles.
+  - [🟢Info-Show] Página de descripción del producto: Información detallada de cada producto.
+  - [🟢Carrito🔴-->pay] Página de checkout: Proceso de compra, incluyendo dirección de envío y pago con tarjeta de crédito u otros métodos.
 ### 3. Requisitos Técnicos Adicionales
 
-Guards: Además de los guards explicados en clase, se debe añadir un guard que impida el acceso al backoffice a los clientes con el rol "CLIENT". Este rol está almacenado en sessionStorage (visto en la última clase).
-Estructura y modularidad: Se valorará el uso de una estructura bien organizada y modular en Angular.
-Diseño y experiencia de usuario (UX/UI): Se tendrá en cuenta la interfaz de la tienda para evaluar la navegabilidad y la experiencia del usuario.
-Responsive Design: La tienda debe adaptarse correctamente a diferentes tamaños de pantalla.
+  - [🔴] Guards: Además de los guards explicados en clase, se debe añadir un guard que impida el acceso al backoffice a los clientes con el rol "CLIENT". Este rol está almacenado en sessionStorage (visto en la última clase).
+  - [🟡] Estructura y modularidad: Se valorará el uso de una estructura bien organizada y modular en Angular.
+  - [🟡] Diseño y experiencia de usuario (UX/UI): Se tendrá en cuenta la interfaz de la tienda para evaluar la navegabilidad y la experiencia del usuario.
+  - [🟡] Responsive Design: La tienda debe adaptarse correctamente a diferentes tamaños de pantalla.
