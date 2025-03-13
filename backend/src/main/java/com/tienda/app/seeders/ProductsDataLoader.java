@@ -65,31 +65,31 @@ public class ProductsDataLoader implements CommandLineRunner {
         saveProduct(user1, "Alas de Onix", "Rebecca Yarros", "Fantasia", "Dragones",BigDecimal.valueOf(21.99), 21.0, Currency.EUR, 6,
                 "Tras casi dieciocho meses en el Colegio de Guerra Basgiath, Violet Sorrengail tiene claro que no queda tiempo para entrenar. Hay que tomar decisiones. La batalla ha comenzado y, con enemigos acercándose a las murallas e infiltrados en sus propias filas, es imposible saber en quién confiar.");
 
-        saveProduct(user2, "El imperio del vampiro", "Jay Kristoff", "Alta fantasia", "Vampiros",BigDecimal.valueOf(22.99), 21.0, Currency.EUR, 7,
+        saveProduct(user2, "Un destino teñido de sangre", "Jay Kristoff", "Alta fantasia", "Vampiros",BigDecimal.valueOf(22.99), 21.0, Currency.EUR, 7,
                 "Durante casi tres décadas, los vampiros han luchado contra los humanos, cimentando su imperio eterno mientras el nuestro se desangraba. Ahora los que sobrevivimos somos solo unas chispas de luz en un mar de oscuridad creciente. Gabriel de León es el último miembro de la Orden de Plata, dedicada a defender el reino y la iglesia antes de que los arrasaran. Su destrucción fue imparable cuando la luz del día nos abandonó.");
-        saveProduct(user2, "El imperio de los condenados", "Jay Kristoff", "Alta fantasia","Vampiros", BigDecimal.valueOf(21.99), 21.0, Currency.EUR, 7,
+        saveProduct(user2, "Una ventana a la oscuridad", "Jay Kristoff", "Alta fantasia","Drama", BigDecimal.valueOf(21.99), 21.0, Currency.EUR, 7,
                 "Gabriel de León ha perdido la oportunidad de acabar con la noche sin fin. Ahora, embarcado en una incierta alianza con una vampira, se propone recurrir a la enigmática estirpe Esani para averiguar cómo deshacer la muerte de los días...");
 
-        saveProduct(user2, "Una corte de rosas y espinas", "Lauren Roberts", "Romantasy","Faes", BigDecimal.valueOf(15.99), 21.0, Currency.EUR, 7,
+        saveProduct(user2, "Una corte de rosas y espinas", "Jennifer Armentrout", "Romantasy","Faes", BigDecimal.valueOf(15.99), 21.0, Currency.EUR, 7,
                 "Cuando la cazadora Feyre mata a un lobo en el bosque, una criatura bestial irrumpe en su casa para exigir una compensación. Así, es trasladada a una tierra mágica y engañosa de la que solo había oído hablar en las leyendas, donde Feyre descubre que su captor no es un animal sino Tamlin: una divinidad inmortal y letal que alguna vez reinó en su mundo.");
-        saveProduct(user2, "Una corte de niebla y furia", "Lauren Roberts", "Romantasy","Faes", BigDecimal.valueOf(16.99), 21.0, Currency.EUR, 7,
+        saveProduct(user2, "Una corte de niebla y furia", "Jennifer Armentrout", "Romantasy","Faes", BigDecimal.valueOf(16.99), 21.0, Currency.EUR, 7,
                 "Tras haber superado más pruebas de las que un corazón humano puede soportar, Feyre regresa a la Corte Primavera con los poderes de una alta fae. Sin embargo, no consigue olvidar los crímenes que se vio obligada a cometer para salvar a Tamlin y a su pueblo, ni el perverso pacto que forjó con Rhysand, el alto lord de la temible Corte Noche.");
-        saveProduct(user2, "Una corte de alas y ruina", "Lauren Roberts", "Romantasy", "Faes",BigDecimal.valueOf(17.99), 21.0, Currency.EUR, 7,
+        saveProduct(user2, "Una corte de alas y ruina", "Jennifer Armentrout", "Romantasy", "Faes",BigDecimal.valueOf(17.99), 21.0, Currency.EUR, 7,
                 "Feyre regresa a la Corte Primavera, decidida a reunir información sobre los planes de Tamlin y del rey invasor que amenaza con destruir Prythian. Para esto deberá formar parte de un peligroso, e incluso letal, juego de engaño. Un juego en el que un simple error podría condenar no solo a Feyre sino también a todo el mundo a su alrededor.");
-        saveProduct(user2, "Una corte de hielo y estrellas", "Lauren Roberts", "Romantasy", "Faes",BigDecimal.valueOf(16.99), 21.0, Currency.EUR, 7,
+        saveProduct(user2, "Una corte de hielo y estrellas", "Jennifer Armentrout", "Romantasy", "Faes",BigDecimal.valueOf(16.99), 21.0, Currency.EUR, 7,
                 "Feyre, Rhys y su círculo más íntimo de amigos están muy ocupados reconstruyendo la Corte Noche y el vasto mundo que la rodea. Pero el solsticio de invierno finalmente se acerca, y con él, parece que llegará cierto alivio ganado con mucho esfuerzo. No obstante, esta atmósfera alegre y festiva no conseguirá detener las sombras del pasado que acechan sin dar tregua.");
-        saveProduct(user2, "Una corte de llamas plateadas", "Lauren Roberts", "Romantasy","Faes", BigDecimal.valueOf(18.99), 21.0, Currency.EUR, 7,
+        saveProduct(user2, "Una corte de llamas plateadas", "Jennifer Armentrout", "Romantasy","Faes", BigDecimal.valueOf(18.99), 21.0, Currency.EUR, 7,
                 "Desde que fue forzada a meterse en el Caldero y se convirtió en alta fae en contra de su voluntad, Nesta Archeron lucha por encontrar su propio lugar dentro del extraño y letal mundo en el que habita. A su temperamento irascible se suma la dificultad para superar los horrores de la guerra con Hybern y todo lo que perdió en ella.");
 
-        saveProduct(user1, "De sangre y cenizas", "Jennifer Armentrout", "Romantasy", "Dioses",BigDecimal.valueOf(18.99), 21.0, Currency.EUR, 7,
+        saveProduct(user1, "El ciclo del roble y el acebo", "Jennifer Armentrout", "Romantasy", "Dioses",BigDecimal.valueOf(18.99), 21.0, Currency.EUR, 7,
                 "Elegida desde su nacimiento para dar comienzo a una nueva era, la vida de Poppy nunca le ha pertenecido. La vida de la Doncella es solitaria. Jamás la tocarán. Jamás la mirarán. Jamás le hablarán. Jamás sentirá placer. Mientras espera el día de su Ascensión, preferiría estar con los guardias luchando contra el mal que se llevó a su familia que preparándose para que los dioses la encuentren lo bastante digna. Pero la elección nunca ha sido suya.");
-        saveProduct(user1, "La guerra de las dos reinas", "Jennifer Armentrout", "Romantasy", "Dioses",BigDecimal.valueOf(18.99), 21.0, Currency.EUR, 7,
+        saveProduct(user1, "El cortejo de Bristol Keats", "Jennifer Armentrout", "Romantasy", "Historia",BigDecimal.valueOf(18.99), 21.0, Currency.EUR, 7,
                 "Nada podrá evitar que Poppy libere a su Rey y destruya todo lo que la Corona de Sangre representa. Con la fuerza de los guardias y el apoyo de los wolven, Poppy debe convencer a los generales de Atlantia de luchar a su manera, porque esta vez no puede haber retirada. No si ella mantiene la esperanza de construir un futuro en el que los dos reinos puedan convivir en paz.");
-        saveProduct(user1, "Un alma de ceniza y sangre", "Jennifer Armentrout", "Romantasy","Dioses", BigDecimal.valueOf(19.99), 21.0, Currency.EUR, 7,
+        saveProduct(user1, "Los juegos de los dioses", "Jennifer Armentrout", "Fantasia","Dioses", BigDecimal.valueOf(19.99), 21.0, Currency.EUR, 7,
                 "La Reina de Carne y Fuego se ha convertido en la Primigenia de Sangre y Hueso, la verdadera Primigenia de la Vida y la Muerte. Y la batalla que Casteel, Poppy y sus aliados han estado librando solo acaba de empezar. Los dioses se están despertando por todo Iliseeum y en el mundo mortal, preparándose para la guerra que se avecina.");
-        saveProduct(user1, "Un reino de carne y fuego", "Jennifer Armentrout", "Romantasy","Dioses", BigDecimal.valueOf(19.99), 21.0, Currency.EUR, 7,
+        saveProduct(user1, "Phantasma", "Jennifer Armentrout", "Drama","Suspense", BigDecimal.valueOf(19.99), 21.0, Currency.EUR, 7,
                 "Todo lo que ha creído Poppy es mentira, incluido el hombre del que se estaba enamorando. Rodeada de pronto por gente que la ve como un símbolo de un reino monstruoso, apenas sabe quién es sin el velo de la Doncella. Pero lo que sí sabe es que nada es tan peligroso para ella como él. El Señor Oscuro. El príncipe de Atlantia.");
-        saveProduct(user1, "Una corona de huesos dorados", "Jennifer Armentrout", "Romantasy","Dioses", BigDecimal.valueOf(20.99), 22.0, Currency.USD, 7,
+        saveProduct(user1, "Sin corazon", "Jennifer Armentrout", "Fantasia","Romance", BigDecimal.valueOf(20.99), 22.0, Currency.USD, 7,
                 "Poppy jamás soñó que encontraría el amor que ha encontrado con el príncipe Casteel. Le gustaría disfrutar de su felicidad, pero primero deben liberar al hermano de Casteel y encontrar al suyo. Es una misión peligrosa y una de enormes consecuencias con las que ninguno de los dos había soñado. Porque Poppy es la Elegida, la Bendecida. La verdadera regente de Atlantia. Lleva en su interior la sangre del rey de los dioses. Por derecho propio, la corona y el reino son suyos.");
     }
 
