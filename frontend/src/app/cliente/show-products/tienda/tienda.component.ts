@@ -1,8 +1,8 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { CarritoService } from '../../services/service/carrito.service';
-import { Libro } from '../../services/models/libro.model';
+import { CarritoService } from '../../../services/service/carrito.service';
+import { Libro } from '../../../services/models/libro.model';
 import { NgFor, NgIf } from '@angular/common';
-import { ProductService } from '../../services/service/product.service';
+import { ProductService } from '../../../services/service/product.service';
 import { Subscription } from 'rxjs';
 import { InfoShowComponent } from '../info-show/info-show.component';
 

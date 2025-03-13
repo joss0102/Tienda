@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { CredentialsService } from '../../services/auth/credentials.service';
-import { LoginInterface } from '../../services/interfaces/auth';
-import { TokenService } from '../../services/auth/token.service';
+import { CredentialsService } from '../../../services/auth/credentials.service';
+import { LoginInterface } from '../../../services/interfaces/auth';
+import { TokenService } from '../../../services/auth/token.service';
 import { Router, RouterLink } from '@angular/router';
-import { UseStateService } from '../../services/auth/use-state.service';
-import { PopupService } from '../../services/utils/popup.service';
+import { UseStateService } from '../../../services/auth/use-state.service';
+import { PopupService } from '../../../services/utils/popup.service';
 
 @Component({
   selector: 'app-login',

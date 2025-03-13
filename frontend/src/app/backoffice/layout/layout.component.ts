@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
-import {HeaderBackofficeComponent} from '../header-backoffice/header-backoffice.component';
+import {HeaderBackofficeComponent} from '../header/header-backoffice/header-backoffice.component';
 import {RouterOutlet} from '@angular/router';
-import {SidebarComponent} from '../sidebar/sidebar.component';
+import {SidebarComponent} from '../header/sidebar/sidebar.component';
 import {SidebarStatusService} from '../../services/status/sidebar-status.service';
 
 @Component({

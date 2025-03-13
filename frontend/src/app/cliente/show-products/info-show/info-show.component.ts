@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { Location, NgFor, NgIf } from '@angular/common';
-import { CarritoService } from '../../services/service/carrito.service';
+import { CarritoService } from '../../../services/service/carrito.service';
 
 @Component({
   selector: 'app-info-show',

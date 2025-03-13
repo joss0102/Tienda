@@ -3,8 +3,8 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MenuMovilesComponent } from '../menu-moviles/menu-moviles.component';
 import { RouterModule } from '@angular/router';
-import { CarritoService } from '../../services/service/carrito.service';
-import { TokenService } from '../../services/auth/token.service';
+import { CarritoService } from '../../../services/service/carrito.service';
+import { TokenService } from '../../../services/auth/token.service';
 import { Subscription } from 'rxjs';
 
 @Component({

@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { CarritoService } from '../../services/service/carrito.service';
+import { CarritoService } from '../../../services/service/carrito.service';
 import { HttpClient } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 
-import { environment } from '../../../environments/environment';
+import { environment } from '../../../../environments/environment';
 import { NgFor, NgIf } from '@angular/common';
 
 // carrito.component.ts

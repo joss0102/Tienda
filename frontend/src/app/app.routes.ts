@@ -4,15 +4,15 @@ import {LayoutComponent} from './cliente/layout/layout.component';
 import {LayoutBackComponent} from './backoffice/layout/layout.component';
 
 import {HomeComponent} from './cliente/home/home.component';
-import {LoginComponent} from './cliente/login/login.component';
-import {RegistroComponent} from './cliente/registro/registro.component';
-import {TiendaComponent} from './cliente/tienda/tienda.component';
+import {LoginComponent} from './cliente/user/login/login.component';
+import {RegistroComponent} from './cliente/user/registro/registro.component';
+import {TiendaComponent} from './cliente/show-products/tienda/tienda.component';
 import {ControlPanelComponent} from './backoffice/control-panel/control-panel.component';
 import {PageNotFoundComponent} from './page-not-found/page-not-found.component';
-import { CarritoComponent } from './cliente/carrito/carrito.component';
+import { CarritoComponent } from './cliente/purchase/carrito/carrito.component';
 import {publicGuard} from './services/guards/public.guard';
 
-import { InfoShowComponent } from './cliente/info-show/info-show.component';
+import { InfoShowComponent } from './cliente/show-products/info-show/info-show.component';
 
 
 export const routes: Routes = [

@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {SidebarStatusService} from '../../services/status/sidebar-status.service';
+import {SidebarStatusService} from '../../../services/status/sidebar-status.service';
 import { RouterLink } from '@angular/router';
 
 @Component({
