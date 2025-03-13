@@ -10,3 +10,18 @@
 .bg-dark {
   background-color: #212529 !important;
 }
+* {
+  font-family: "Poppins", sans-serif; // Base font
+}
+
+// Si quieres que los encabezados usen "Montserrat"
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Montserrat", sans-serif; // Tipografía para encabezados
+  font-weight: bold; // O el peso que prefieras
+}
+
+// Establecer fuentes por defecto en el body
+body {
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+}

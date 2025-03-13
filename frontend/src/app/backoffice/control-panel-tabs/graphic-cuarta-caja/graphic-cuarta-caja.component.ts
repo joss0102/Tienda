@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { ChartConfiguration, ChartDataset, ChartType } from 'chart.js';
 import { BaseChartDirective } from 'ng2-charts';
+import { ChartConfiguration, ChartDataset, ChartType } from 'chart.js';
+import { ProductService } from '../../../services/service/product.service';
 
-@Component({ // tercera
+@Component({
   selector: 'app-graphic-cuarta-caja',
   imports: [BaseChartDirective],
   standalone: true,
@@ -10,79 +11,56 @@ import { BaseChartDirective } from 'ng2-charts';
   styleUrl: './graphic-cuarta-caja.component.scss'
 })
 export class GraphicCuartaCajaComponent implements OnInit {
+  constructor(private productService: ProductService) {}
   ngOnInit(): void {
     this.setChartData();
   }
-
   public lineChartOptions: ChartConfiguration['options'] = {
     responsive: true,
     maintainAspectRatio: false,
     plugins: {
       legend: {
         display: true,
-        position: 'bottom'
-      }
-    },
-    scales: {
-      x: {
-        title: {
-          display: true,
-          text: "Meses",
-          font: { size: 14, weight: "bolder" }
-        }
+        position: 'top'
       },
-      y: {
-        title: {
-          display: true,
-          text: "Libros",
-          font: { size: 14, weight: "bolder" }
-        },
-        ticks: {
-          stepSize: 10
-        }
+      tooltip: {},
+      title: {
+        text: "Popularidad de Libros",
+        display: true,
       }
     },
-    interaction: {
-      mode: 'index',
-      intersect: false
-    }
   };
-
-  public lineChartLabels: string[] = [];
-  public lineChartData: ChartDataset<'line'>[] = [
-    {
-      data: [],
-      label: "Libros leídos",
-      borderColor: "blue",
-      borderWidth: 2,
-      fill: false,
-      pointBackgroundColor: "blue",
-      pointBorderColor: "blue",
-      pointRadius: 5
-    },
-    {
-      data: [],
-      label: "Objetivo",
-      borderColor: "red",
-      borderWidth: 2,
-      fill: false,
-      pointBackgroundColor: "red",
-      pointBorderColor: "red",
-      pointRadius: 5
-    }
-  ];
-
+  public lineChartLabels: string[] = [];  // Aquí vamos a agregar los nombres de los libros.
+  public lineChartData: { labels: string[], datasets: ChartDataset<'line'>[] } = {
+    labels: [],
+    datasets: [
+      {
+        data: [],
+        label: 'Popularidad de los Libros',
+        fill: false,
+        borderColor: '#4A90E2',
+        tension: 0.1
+      }
+    ]
+  };
   public lineChartType: ChartType = 'line';
-
   private setChartData(): void {
-    const data = {
-      labels: ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"],
-      values1: [10, 4, 7, 8, 0, 0, 0, 3, 12, 11, 2, 0],
-      values2: [2, 5, 5, 7, 8, 1, 0, 0, 3, 10, 10, 5]
-    };
-
-    this.lineChartLabels = data.labels;
-    this.lineChartData[0].data = data.values1;
-    this.lineChartData[1].data = data.values2;
+    this.productService.getAllProducts().subscribe(
+      (products) => {
+        if (!products || products.length === 0) {
+          console.warn('No se recibieron productos');
+          return;
+        }
+        products.forEach(product => {
+          if (product.title && product.popularity) {
+            this.lineChartLabels.push(product.title);
+            this.lineChartData.datasets[0].data.push(product.popularity);
+          }
+        });
+      },
+      (error) => {
+        console.error('Error al obtener los productos:', error);
+      }
+    );
   }
 }

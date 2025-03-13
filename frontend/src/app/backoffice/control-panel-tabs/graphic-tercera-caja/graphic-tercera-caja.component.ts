@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core'; 
+import { Component, OnInit } from '@angular/core';
 import { BaseChartDirective } from 'ng2-charts';
 import { ChartConfiguration, ChartDataset, ChartType } from 'chart.js';
-import { LibroService } from '../../../services/service/libro-service.service';
+import { ProductService } from '../../../services/service/product.service';
 
 @Component({
   selector: 'app-graphic-tercera-caja',
@@ -11,13 +11,10 @@ import { LibroService } from '../../../services/service/libro-service.service';
   styleUrl: './graphic-tercera-caja.component.scss'
 })
 export class GraphicTerceraCajaComponent implements OnInit {
-
-  constructor(private libroService: LibroService) {}
-
+  constructor(private productService: ProductService) {}
   ngOnInit(): void {
     this.setChartData();
   }
-
   public lineChartOptions: ChartConfiguration['options'] = {
     responsive: true,
     maintainAspectRatio: false,
@@ -51,7 +48,6 @@ export class GraphicTerceraCajaComponent implements OnInit {
       intersect: false
     }
   };
-
   public lineChartLabels: string[] = [];
   public lineChartData: ChartDataset<'line'>[] = [
     {
@@ -66,13 +62,20 @@ export class GraphicTerceraCajaComponent implements OnInit {
       pointRadius: 5
     }
   ];
-
   public lineChartType: ChartType = 'line';
-
   private setChartData(): void {
-    const libros = this.libroService.getLibros();
-    
-    this.lineChartLabels = libros.map(libro => libro.titulo);
-    this.lineChartData[0].data = libros.map(libro => libro.precio);
+    this.productService.getAllProducts().subscribe(
+      (products) => {
+        if (!products || products.length === 0) {
+          console.warn('Advertencia: No se recibieron productos');
+          return;
+        }
+        this.lineChartLabels = products.map(product => product.title);
+        this.lineChartData[0].data = products.map(product => product.price);
+      },
+      (error) => {
+        console.error('Error al obtener productos:', error);
+      }
+    );
   }
 }

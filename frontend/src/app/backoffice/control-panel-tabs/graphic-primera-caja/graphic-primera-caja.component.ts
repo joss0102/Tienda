@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core'; 
+import { Component, OnInit } from '@angular/core';
 import { BaseChartDirective } from 'ng2-charts';
 import { ChartConfiguration, ChartDataset, ChartType } from 'chart.js';
-import { LibroService } from '../../../services/service/libro-service.service';
+import { ProductService } from '../../../services/service/product.service';
 
 @Component({
   selector: 'app-graphic-primera-caja',
@@ -11,13 +11,10 @@ import { LibroService } from '../../../services/service/libro-service.service';
   styleUrl: './graphic-primera-caja.component.scss'
 })
 export class GraphicPrimeraCajaComponent implements OnInit {
-
-  constructor(private libroService: LibroService) {}
-
+  constructor(private productService: ProductService) {}
   ngOnInit(): void {
     this.setChartData();
   }
-
   public doughnutChartOptions: ChartConfiguration['options'] = {
     responsive: true,
     maintainAspectRatio: false,
@@ -28,35 +25,47 @@ export class GraphicPrimeraCajaComponent implements OnInit {
       },
       tooltip: {},
       title: {
-        text: "Primer gráfico",
+        text: "Gráfico de Géneros",
         display: true,
       }
     },
   };
-
   public doughnutChartLabels: string[] = [];
   public doughnutChartData: { labels: string[], datasets: ChartDataset<'doughnut'>[]} = {
     labels: [],
     datasets: [{
       data: [],
-      backgroundColor: [],
-      hoverBackgroundColor: ["#357ABD", "#E94E3A", "#6C3483", "#FF85A2"],
+      backgroundColor: ["#4A90E2", "#FF6F61", "#8E44AD", "#FFB6C1", "#FFD700", "#20B2AA", "#FF4500", "#DA70D6"],
     }]
   };
-
   public doughnutChartType: ChartType = 'doughnut';
-
   private setChartData(): void {
-    const libros = this.libroService.getLibros();
-    
-    const generoMap = new Map<string, number>();
-    libros.forEach(libro => {
-      generoMap.set(libro.genero, (generoMap.get(libro.genero) || 0) + 1);
-    });
-
-    this.doughnutChartLabels = Array.from(generoMap.keys());
-    this.doughnutChartData.labels = Array.from(generoMap.keys());
-    this.doughnutChartData.datasets[0].data = Array.from(generoMap.values());
-    this.doughnutChartData.datasets[0].backgroundColor = ["#4A90E2", "#FF6F61", "#8E44AD", "#FFB6C1", "#FFD700", "#20B2AA", "#FF4500", "#DA70D6"];
+    this.productService.getAllProducts().subscribe(
+      (products) => {
+        if (!products || products.length === 0) {
+          console.warn('Advertencia: No se recibieron productos');
+          return;
+        }
+        const generoMap = new Map<string, number>();
+        products.forEach(product => {
+          if (product.genre1) {
+            generoMap.set(product.genre1, (generoMap.get(product.genre1) || 0) + 1);
+          } else {
+            console.warn('Producto sin genre1:', product);
+          }
+          if (product.genre2) {
+            generoMap.set(product.genre2, (generoMap.get(product.genre2) || 0) + 1);
+          } else {
+            console.warn('Producto sin genre2:', product);
+          }
+        });
+        this.doughnutChartLabels = Array.from(generoMap.keys());
+        this.doughnutChartData.labels = this.doughnutChartLabels;
+        this.doughnutChartData.datasets[0].data = Array.from(generoMap.values());
+      },
+      (error) => {
+        console.error('Error al obtener productos:', error);
+      }
+    );
   }
 }

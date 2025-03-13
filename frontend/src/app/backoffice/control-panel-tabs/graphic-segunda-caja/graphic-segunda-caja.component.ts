@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core'; 
+import { Component, OnInit } from '@angular/core';
 import { BaseChartDirective } from 'ng2-charts';
 import { ChartConfiguration, ChartDataset, ChartType } from 'chart.js';
-import { LibroService } from '../../../services/service/libro-service.service';
+import { ProductService } from '../../../services/service/product.service';
 
 @Component({
   selector: 'app-graphic-segunda-caja',
@@ -11,13 +11,10 @@ import { LibroService } from '../../../services/service/libro-service.service';
   styleUrl: './graphic-segunda-caja.component.scss'
 })
 export class GraphicSegundaCajaComponent implements OnInit {
-
-  constructor(private libroService: LibroService) {}
-
+  constructor(private productService: ProductService) {}
   ngOnInit(): void {
     this.setChartData();
   }
-
   public barChartOptions: ChartConfiguration['options'] = {
     responsive: true,
     maintainAspectRatio: false,
@@ -48,7 +45,6 @@ export class GraphicSegundaCajaComponent implements OnInit {
       }
     }
   };
-
   public barChartLabels: string[] = [];
   public barChartData: ChartDataset<'bar'>[] = [
     {
@@ -58,18 +54,28 @@ export class GraphicSegundaCajaComponent implements OnInit {
       hoverBackgroundColor: ["#b30000", "#0000b3", "#006600", "#b3b300", "purple"],
     }
   ];
-
   public barChartType: ChartType = 'bar';
-
   private setChartData(): void {
-    const libros = this.libroService.getLibros();
-    
-    const autorMap = new Map<string, number>();
-    libros.forEach(libro => {
-      autorMap.set(libro.autor, (autorMap.get(libro.autor) || 0) + 1);
-    });
-
-    this.barChartLabels = Array.from(autorMap.keys());
-    this.barChartData[0].data = Array.from(autorMap.values());
+    this.productService.getAllProducts().subscribe(
+      (products) => {
+        if (!products || products.length === 0) {
+          console.warn('Advertencia: No se recibieron productos');
+          return;
+        }
+        const autorMap = new Map<string, number>();
+        products.forEach(product => {
+          if (product.author) {
+            autorMap.set(product.author, (autorMap.get(product.author) || 0) + 1);
+          } else {
+            console.warn('Producto sin autor:', product);
+          }
+        });
+        this.barChartLabels = Array.from(autorMap.keys());
+        this.barChartData[0].data = Array.from(autorMap.values());
+      },
+      (error) => {
+        console.error('Error al obtener productos:', error);
+      }
+    );
   }
 }

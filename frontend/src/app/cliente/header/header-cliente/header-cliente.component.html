@@ -3,6 +3,9 @@
     <a class="text-decoration-none d-block" rel="noopener" routerLink="/home">
       <img style="max-width: 55px" src="/icono-libros.png" alt="logo">
     </a>
+    <a *ngIf="isLoggedIn" class="btn px-3 py-1 d-flex align-items-center gap-2 fw-bold" (click)="logout()" routerLink="/profile-cliente">
+      <i class="bi bi-person"></i> Perfil
+    </a>
   </div>
   
   <div class="header-right d-flex align-items-center ms-auto">
@@ -19,7 +22,7 @@
       <a *ngIf="!isLoggedIn" class="btn btn-outline-light px-3 py-1 d-flex align-items-center gap-2" routerLink="/login">
         <i class="bi bi-person"></i> Iniciar sesión
       </a>
-      <a *ngIf="isLoggedIn" class="btn btn-outline-light px-3 py-1 d-flex align-items-center gap-2" (click)="logout()">
+      <a *ngIf="isLoggedIn" class="btn btn-outline-light px-3 py-1 d-flex align-items-center gap-2" (click)="logout()" routerLink="/home">
         <i class="bi bi-box-arrow-right"></i> Cerrar sesión
       </a>
     </nav>

@@ -12,6 +12,10 @@
   .header-left {
     display: flex;
     align-items: center;
+    .btn{
+      margin-left: 30px;
+      color: white;
+    }
   }
 
   .header-center {
