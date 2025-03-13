@@ -31,4 +31,8 @@ export class PayComponent {
   cerrarModal() {
     this.cerrar.emit(); // Cierra el modal cuando el usuario hace clic en ✖ o cancelar
   }
+  vaciarCarrito() {
+    this.carritoService.vaciarCarrito();
+    alert('Pago procesado con éxito');
+  }
 }
