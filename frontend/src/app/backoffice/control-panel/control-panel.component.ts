@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import {StatsComponent} from '../control-panel-tabs/stats/stats.component';
-import {GraphicsComponent} from '../control-panel-tabs/graphics/graphics.component';
+import {GraphicsComponent} from '../control-panel-tabs/graficos/graphics/graphics.component';
 
 @Component({
   selector: 'app-control-panel',

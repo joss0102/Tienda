@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { BaseChartDirective } from 'ng2-charts';
 import { ChartConfiguration, ChartDataset, ChartType } from 'chart.js';
-import { ProductService } from '../../../services/service/product.service';
+import { ProductService } from '../../../../services/service/product.service';
 
 @Component({
   selector: 'app-graphic-segunda-caja',

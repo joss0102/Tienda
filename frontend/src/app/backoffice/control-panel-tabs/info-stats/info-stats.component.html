@@ -1,0 +1,47 @@
+<div class="info-stats-container">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title">
+            Información de {{ tipo }}
+            </h5>
+            <button type="button" class="close" (click)="cerrar()">
+            <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            <div *ngIf="tipo === 'libros'" class="info-block">
+            <h6 class="subtitle">Libros leídos:</h6>
+            <div class="three-column">
+                <div *ngFor="let libro of getLibros()" class="info-item">
+                <p>{{ libro }}</p>
+                </div>
+            </div>
+            </div>
+            <div *ngIf="tipo === 'generos'" class="info-block">
+            <h6 class="subtitle">Géneros:</h6>
+            <div class="three-column">
+                <div *ngFor="let genero of getGeneros()" class="info-item">
+                <p>{{ genero }}</p>
+                </div>
+            </div>
+            </div>
+            <div *ngIf="tipo === 'precios'" class="info-block">
+            <h6 class="subtitle">Precios:</h6>
+            <div class="three-column">
+                <div *ngFor="let precio of getPrecios()" class="info-item">
+                <p>{{ precio }}</p>
+                </div>
+            </div>
+            </div>
+            <div *ngIf="tipo === 'autores'" class="info-block">
+            <h6 class="subtitle">Autores:</h6>
+            <div class="three-column">
+                <div *ngFor="let autor of getAutores()" class="info-item">
+                <p>{{ autor }}</p>
+                </div>
+            </div>
+            </div>
+        </div>
+    </div>
+</div>
+  
