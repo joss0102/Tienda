@@ -1,42 +1,54 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
-import { ReactiveFormsModule } from '@angular/forms';
-import { NgIf } from '@angular/common';
+import {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from "@angular/forms";
+
+import { CredentialsService } from '../../../services/auth/credentials.service';
+import { PopupService } from '../../../services/utils/popup.service';
+import { UserInterface } from '../../../services/interfaces/auth';
 
 @Component({
   selector: 'app-registro',
-  imports: [
-    ReactiveFormsModule, NgIf
-  ],
+    imports: [
+        ReactiveFormsModule
+    ],
   standalone: true,
   templateUrl: './registro.component.html',
   styleUrl: './registro.component.scss'
 })
 export class RegistroComponent {
+
   registerForm: FormGroup;
 
-  constructor(private fb: FormBuilder, private router: Router) {
-    this.registerForm = this.fb.group({
+  constructor(
+    private formBuilder: FormBuilder,
+    private credentialsService: CredentialsService,
+    private popupService: PopupService
+  ) {
+    this.registerForm = this.formBuilder.group({
       username: ['', [Validators.required]],
-      email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required]],
-      confirmPassword: ['', [Validators.required]],
-    });
+      roleName: ['', [Validators.required]],
+      firstName: ['', [Validators.required]],
+      lastName: ['', [Validators.required]],
+      address: ['', [Validators.required]],
+    })
   }
 
-  onSubmit() {
-    if (this.registerForm.valid) {
-      const { username, email, password, confirmPassword } = this.registerForm.value;
 
-      if (password === confirmPassword) {
-        console.log('Registro exitoso con:', username, email, password);
-        this.router.navigate(['/app']);
-      } else {
-        alert('Las contraseñas no coinciden.');
-      }
-    } else {
-      alert('Formulario inválido.');
+  submit() {
+    if (this.registerForm.invalid) {
+      return;
     }
+
+    this.credentialsService.register(this.registerForm.value as UserInterface).subscribe({
+      next: (data) => {
+        console.log(data);
+        // Mostrar el popup de éxito y redirigir al login
+        this.popupService.showRedirectToLoginMessage('Registro exitoso', 'Tu cuenta ha sido creada con éxito.');
+      },
+      error: err => {
+        console.log(err);
+      }
+    })
   }
+
 }

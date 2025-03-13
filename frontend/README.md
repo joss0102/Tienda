@@ -44,7 +44,7 @@ Los administradores pueden gestionar y analizar los libros leídos por los usuar
 - El sistema debe contar con una interfaz para los clientes, con las siguientes páginas:
   - [🟢Home] Página principal: Home de la tienda.
   - [🟢Login] Página de login: Ingreso de usuarios.
-  - [🔴Registro] Página de registro: Creación de cuenta.
+  - [🟢Registro] Página de registro: Creación de cuenta.
   - [🟢Tienda] Página de ver productos: Listado de productos disponibles.
   - [🟢Info-Show] Página de descripción del producto: Información detallada de cada producto.
   - [🟢Carrito-->🟢pay] Página de checkout: Proceso de compra, incluyendo dirección de envío y pago con tarjeta de crédito u otros métodos.

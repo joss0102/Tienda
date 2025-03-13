@@ -48,5 +48,17 @@ export class PopupService {
     Swal.close()
   }
 
+  // Nuevo método para redirigir al login
+  async showRedirectToLoginMessage(title: string, message: string): Promise<void> {
+    const result = await Swal.fire({
+      title: title,
+      text: message,
+      icon: 'success',
+      confirmButtonText: 'Iniciar sesión'
+    });
 
+    if (result.isConfirmed) {
+      window.location.href = '/login'; // Redirigir al login
+    }
+  }
 }
