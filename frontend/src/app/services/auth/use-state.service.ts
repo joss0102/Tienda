@@ -10,29 +10,26 @@ export class UseStateService {
   constructor() { }
 
   save(username: string, role: string): void  {
-    sessionStorage.setItem(this.USER_KEY, JSON.stringify({username, role}));
+    const userData = { username, role };
+    sessionStorage.setItem(this.USER_KEY, JSON.stringify(userData));
   }
 
   getUsername(): string | null {
-    const session = JSON.parse(<string>sessionStorage.getItem(this.USER_KEY));
-    if (!session) {
-      return null;
-    }
-
-    return session.username;
+    const session = this.getSessionData();
+    return session ? session.username : null;
   }
 
   getRole(): string | null {
-    const session = JSON.parse(<string>sessionStorage.getItem(this.USER_KEY));
-    if (!session) {
-      return null;
-    }
-
-    return session.role;
+    const session = this.getSessionData();
+    return session ? session.role : null;
   }
 
   removeSession(): void {
     sessionStorage.removeItem(this.USER_KEY);
   }
 
+  private getSessionData(): { username: string, role: string } | null {
+    const session = sessionStorage.getItem(this.USER_KEY);
+    return session ? JSON.parse(session) : null;
+  }
 }

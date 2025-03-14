@@ -50,7 +50,7 @@ Los administradores pueden gestionar y analizar los libros leídos por los usuar
   - [🟢Carrito-->🟢pay] Página de checkout: Proceso de compra, incluyendo dirección de envío y pago con tarjeta de crédito u otros métodos.
 ### 3. Requisitos Técnicos Adicionales
 
-  - [🔴] Guards: Además de los guards explicados en clase, se debe añadir un guard que impida el acceso al backoffice a los clientes con el rol "CLIENT". Este rol está almacenado en sessionStorage (visto en la última clase).
+  - [🟢] Guards: Además de los guards explicados en clase, se debe añadir un guard que impida el acceso al backoffice a los clientes con el rol "CLIENT". Este rol está almacenado en sessionStorage (visto en la última clase).
   - [🟡] Estructura y modularidad: Se valorará el uso de una estructura bien organizada y modular en Angular.
   - [🟢] Diseño y experiencia de usuario (UX/UI): Se tendrá en cuenta la interfaz de la tienda para evaluar la navegabilidad y la experiencia del usuario.
   - [🟡] Responsive Design: La tienda debe adaptarse correctamente a diferentes tamaños de pantalla.

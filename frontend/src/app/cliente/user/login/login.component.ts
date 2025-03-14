@@ -46,33 +46,30 @@ export class LoginComponent {
     this.credentialsService.login(this.loginForm.value as LoginInterface).subscribe({
       next: (data) => {
         this.popupService.loader("Cargando...", "Espere un momento");
-
+    
         setTimeout(() => {
           // Guardamos los nuevos tokens
-          this.tokenService.saveTokens(data.token, "234325423423"); // Asumiendo que el refresh token también lo obtienes de la respuesta
+          this.tokenService.saveTokens(data.token, "234325423423");
+          // Guardamos el rol y el username
           this.useStateService.save(data.username, data.role);
           this.popupService.close();
-          this.router.navigate(['/app/control-panel']); // Redirigir a la página de control
+          this.router.navigate(['/app/control-panel']);
         }, 1500);
-
       },
       error: err => {
         let message;
         if (err.error == "Invalid password") {
           message = "Contraseña incorrecta, inténtelo de nuevo.";
-        }
-        else if (err.error == "User not found") {
+        } else if (err.error == "User not found") {
           message = "El usuario no existe. Compruebe los datos o regístrese en la plataforma.";
-        }
-        else {
+        } else {
           message = err.error;
         }
-
-        this.popupService.showMessage(
-          'Ups, ha ocurrido un error', message, 'error'
-        );
+    
+        this.popupService.showMessage('Ups, ha ocurrido un error', message, 'error');
       }
     });
+    
   }
 
 }

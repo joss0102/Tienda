@@ -15,6 +15,7 @@ import {publicGuard} from './services/guards/public.guard';
 import { MyProductsComponent } from './backoffice/products/my-products/my-products.component';
 
 import { InfoShowComponent } from './cliente/show-products/info-show/info-show.component';
+import { adminGuard } from './services/guards/admin-guard.guard';
 
 
 
@@ -41,9 +42,9 @@ export const routes: Routes = [
       // www.ejemplo.com/app -> no hay parámetros después del app, por lo tanto angular buscar dentro de esta sección de children el path que esté vacío ""
 
       {path: "", redirectTo: "control-panel", pathMatch: "full"}, // -> www.ejemplo.com/app
-      {path: "control-panel", component: ControlPanelComponent}, // -> www.ejemplo.com/app/control-panel
-      {path: "profile", component: ProfileComponent},
-      {path: "products", component: MyProductsComponent},
+      {path: "control-panel", component: ControlPanelComponent,canActivate: [adminGuard]}, // -> www.ejemplo.com/app/control-panel
+      {path: "profile", component: ProfileComponent,canActivate: [adminGuard]},
+      {path: "products", component: MyProductsComponent,canActivate: [adminGuard]},
     ]
   },
 
