@@ -12,6 +12,7 @@ import {PageNotFoundComponent} from './page-not-found/page-not-found.component';
 import { CarritoComponent } from './cliente/purchase/carrito/carrito.component';
 import { ProfileComponent } from './backoffice/profile/profile.component';
 import {publicGuard} from './services/guards/public.guard';
+import { MyProductsComponent } from './backoffice/my-products/my-products.component';
 
 import { InfoShowComponent } from './cliente/show-products/info-show/info-show.component';
 
@@ -42,6 +43,7 @@ export const routes: Routes = [
       {path: "", redirectTo: "control-panel", pathMatch: "full"}, // -> www.ejemplo.com/app
       {path: "control-panel", component: ControlPanelComponent}, // -> www.ejemplo.com/app/control-panel
       {path: "profile", component: ProfileComponent},
+      {path: "products", component: MyProductsComponent},
     ]
   },
 
