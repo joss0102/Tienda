@@ -8,7 +8,7 @@ import { FormsModule } from '@angular/forms';
 @Component({
   selector: 'app-profile',
   standalone: true,
-  imports: [NgIf, FormsModule],
+  imports: [ FormsModule],
   templateUrl: './profile.component.html',
   styleUrls: ['./profile.component.scss']
 })
@@ -45,6 +45,7 @@ export class ProfileComponent implements OnInit {
             this.newFirstName = this.userInfo.firstName;
             this.newLastName = this.userInfo.lastName;
             this.newAddress = this.userInfo.address;
+            console.log(this.userInfo);
           },
           (error) => {
             console.error('Error al obtener la información del usuario:', error);

@@ -1,0 +1,31 @@
+<div class="container mt-4">
+    <button class="btn btn-success mb-3" (click)="toggleCreateProduct()">Crear Producto</button>
+    <app-creation-product
+    *ngIf="showCreationProduct"
+    [userId]="userId"
+    [showCreationProduct]="showCreationProduct"
+    (productCreated)="handleProductCreated($event)">
+    </app-creation-product>
+
+    <h2>Mis Productos</h2>
+    <div *ngIf="productos.length > 0; else noProductos">
+        <div class="row">
+            <div *ngFor="let producto of productos" class="col-md-4 mb-3">
+                <div class="product-card p-3 shadow-sm">
+                    <img [src]="'/covers/' + producto.title + '.png'" class="img-fluid rounded mx-auto d-block" [alt]="producto.title">
+                    <div class="text-center mt-2">
+                        <h5 class="text-white fw-bold">{{ producto.title }}</h5>
+                        <p class="text-white mb-1">{{ producto.author }}</p>
+                        <p class="text-white">{{ producto.price }} {{ producto.currency }}</p>
+                        <button class="btn btn-danger btn-sm mt-2" (click)="deleteProduct(producto.id)">Eliminar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <ng-template #noProductos>
+        <p class="text-muted">No tienes productos registrados.</p>
+    </ng-template>
+
+</div>

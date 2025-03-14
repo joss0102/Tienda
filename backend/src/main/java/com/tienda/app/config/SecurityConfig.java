@@ -57,9 +57,9 @@ public class SecurityConfig {
                                 "/order-items",
                                 "/orders",
                                 "/products/**",
-                                "/users",               // Permite obtener la lista de usuarios
-                                "/users/*/change-password", // Permite cambiar la contraseña
-                                "/users/**",            // Permite acceso a otras rutas de usuario
+                                "/users",
+                                "/users/*/change-password",
+                                "/users/**",
                                 "/user-info",
                                 "/user-info/**",
                                 "/user/user-info/**"
@@ -82,7 +82,6 @@ public class SecurityConfig {
         return new BCryptPasswordEncoder();
     }
 
-    // Configuración del firewall sin usar setFirewall
     @Bean
     public HttpFirewall httpFirewall() {
         StrictHttpFirewall firewall = new StrictHttpFirewall();
@@ -91,7 +90,4 @@ public class SecurityConfig {
 
         return firewall;
     }
-
-
-    // Esta configuración ya no es necesaria, ya que el firewall se maneja con @Bean
 }

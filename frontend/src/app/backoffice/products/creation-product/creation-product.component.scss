@@ -1,0 +1,59 @@
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1040;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+}
+
+.overlay.show {
+    visibility: visible;
+    opacity: 1;
+}
+
+.container {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    z-index: 1090;
+    max-width: 600px;
+    width: 100%;
+    box-sizing: border-box;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+}
+
+.container.show {
+    visibility: visible;
+    opacity: 1;
+}
+
+h2 {
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+p {
+    text-align: center;
+    font-size: 18px;
+    margin-bottom: 20px;
+}
+
+button {
+    display: block;
+    margin: 0 auto;
+    padding: 10px 20px;
+    border-radius: 5px;
+    width: auto;
+}

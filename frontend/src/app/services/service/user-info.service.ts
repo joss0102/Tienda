@@ -15,7 +15,5 @@ export class UserInfoService {
   getUserInfoByUserId(id: number): Observable<any> {
     return this.http.get<any>(`${this.apiUrl}/${id}`);
   }
-  changePassword(userId: number, oldPassword: string, newPassword: string): Observable<any> {
-    return this.http.put(`${this.apiUrl}/${userId}/change-password`, { oldPassword, newPassword });
-  }
+
 }

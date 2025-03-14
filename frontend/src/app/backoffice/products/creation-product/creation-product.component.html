@@ -1,0 +1,7 @@
+<div class="overlay" *ngIf="showCreationProduct"></div>
+
+<div class="container mt-4" [ngClass]="{'show': showCreationProduct}">
+    <h2>Opción no disponible</h2>
+    <p>Lo sentimos, esta opción no está disponible en este momento.</p>
+    <button type="button" class="btn btn-primary" (click)="closeModal()">Cerrar</button>
+</div>
