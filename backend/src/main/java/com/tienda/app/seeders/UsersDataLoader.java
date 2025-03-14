@@ -1,5 +1,5 @@
-
 package com.tienda.app.seeders;
+
 import com.tienda.app.enums.RoleName;
 import com.tienda.app.models.Role;
 import com.tienda.app.models.UserInfo;
@@ -12,7 +12,6 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.core.annotation.Order;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Component;
-
 
 @Component
 @Order(1)
@@ -28,12 +27,11 @@ public class UsersDataLoader implements CommandLineRunner {
     private UserInfoRepository userInfoRepository;
 
     @Autowired
-    private BCryptPasswordEncoder passwordEncoder;  // Asegúrate de tener esto inyectado
+    private BCryptPasswordEncoder passwordEncoder;
 
     @Override
     public void run(String... args) throws Exception {
 
-        // Insertar roles
         Role adminRole = new Role();
         adminRole.setRoleName(RoleName.ADMIN);
 
@@ -43,84 +41,44 @@ public class UsersDataLoader implements CommandLineRunner {
         Role sellerRole = new Role();
         sellerRole.setRoleName(RoleName.SELLER);
 
-        // Guardar roles en la base de datos
         roleRepository.save(adminRole);
         roleRepository.save(clientRole);
         roleRepository.save(sellerRole);
 
-        // Insertar usuarios
-        User user1 = new User();
-        user1.setUsername("Joss");
-        user1.setPassword(passwordEncoder.encode("1234"));
-        user1.setRole(adminRole);
-        userRepository.save(user1);
+        saveUser("Joss", "1234", adminRole, "Jose", "Rosell", "C/Géminis, Parla");
+        saveUser("HelioVK", "1234", sellerRole, "Helio", "Rebato", "C/La diligencia, Vallecas");
+        saveUser("IsaFdez", "1234", clientRole, "Isabel", "Fernandez", "C/isabel II, Parla");
+        saveUser("Dumi", "1234", clientRole, "Dumi", "Thomas", "C/estrella vega, Parla");
+        saveUser("David", "12345", clientRole, "David", "Fernandez", "Plaza eliptica");
+    }
 
-        UserInfo userInfo1 = new UserInfo();
-        userInfo1.setFirstName("Jose");
-        userInfo1.setLastName("Rosell");
-        userInfo1.setAddress("C/Géminis, Parla");
-        userInfo1.setUser(user1);
-        userRepository.save(user1);
-        userInfoRepository.save(userInfo1);
+    private void saveUser(String username, String password, Role role, String firstName, String lastName, String address) {
 
+        User user = new User();
+        user.setUsername(username);
+        user.setPassword(passwordEncoder.encode(password));
+        user.setRole(role);
 
-        User user2 = new User();
-        user2.setUsername("HelioVK");
-        user2.setPassword(passwordEncoder.encode("1234"));
-        user2.setRole(sellerRole);
-        userRepository.save(user2);
+        userRepository.save(user);
 
-        UserInfo userInfo2 = new UserInfo();
-        userInfo2.setFirstName("Helio");
-        userInfo2.setLastName("Rebato");
-        userInfo2.setAddress("C/La diligencia, Vallecas");
-        userInfo2.setUser(user2);
-        userRepository.save(user2);
-        userInfoRepository.save(userInfo2);
+        UserInfo userInfo = new UserInfo();
+        userInfo.setFirstName(firstName);
+        userInfo.setLastName(lastName);
+        userInfo.setAddress(address);
+        userInfo.setUser(user);
 
+        userInfoRepository.save(userInfo);
+    }
 
-        User user3 = new User();
-        user3.setUsername("IsaFdez");
-        user3.setPassword(passwordEncoder.encode("1234"));
-        user3.setRole(clientRole);
-        userRepository.save(user3);
+    private UserInfo saveUserInfo(String firstName, String lastName, String address) {
 
-        UserInfo userInfo3 = new UserInfo();
-        userInfo3.setFirstName("Isabel");
-        userInfo3.setLastName("Fernandez");
-        userInfo3.setAddress("C/isabel II, Parla");
-        userInfo3.setUser(user3);
-        userRepository.save(user3);
-        userInfoRepository.save(userInfo3);
+        UserInfo userInfo = new UserInfo();
+        userInfo.setFirstName(firstName);
+        userInfo.setLastName(lastName);
+        userInfo.setAddress(address);
+        
+        userInfoRepository.save(userInfo);
 
-
-        User user4 = new User();
-        user4.setUsername("Dumi");
-        user4.setPassword(passwordEncoder.encode("1234"));
-        user4.setRole(clientRole);
-        userRepository.save(user4);
-
-        UserInfo userInfo4 = new UserInfo();
-        userInfo4.setFirstName("Dumi");
-        userInfo4.setLastName("Thomas");
-        userInfo4.setAddress("C/estrella vega, Parla");
-        userInfo4.setUser(user4);
-        userRepository.save(user4);
-        userInfoRepository.save(userInfo4);
-
-
-        User user5 = new User();
-        user5.setUsername("David");
-        user5.setPassword(passwordEncoder.encode("1234"));
-        user5.setRole(clientRole);
-        userRepository.save(user5);
-
-        UserInfo userInfo5 = new UserInfo();
-        userInfo5.setFirstName("David");
-        userInfo5.setLastName("Fernandez");
-        userInfo5.setAddress("Plaza eliptica");
-        userInfo5.setUser(user5);
-        userRepository.save(user5);
-        userInfoRepository.save(userInfo5);
+        return userInfo;
     }
 }

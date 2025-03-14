@@ -9,14 +9,14 @@ import { NgIf } from '@angular/common';
   styleUrls: ['./info-show.component.scss']
 })
 export class InfoShowComponent {
-  @Input() libro: any;  // Recibe el libro seleccionado
-  @Output() agregar: EventEmitter<any> = new EventEmitter(); // Emitir evento para agregar al carrito
+  @Input() libro: any;
+  @Output() agregar: EventEmitter<any> = new EventEmitter();
 
   constructor(private carritoService: CarritoService) {}
 
   agregarAlCarrito() {
     if (this.libro) {
-      this.agregar.emit(this.libro);  // Emitir el libro al componente padre
+      this.agregar.emit(this.libro);
     }
   }
 }

@@ -1,5 +1,4 @@
 <section class="container mt-4">
-    <!-- Sección Hero -->
     <section class="book text-center text-white py-5 rounded position-relative">
         <div class="overlay"></div>
         <div class="book-content position-relative">
@@ -9,21 +8,16 @@
         </div>
     </section>
 
-    <!-- Contenedor de Productos -->
     <div class="datos-container mt-5">
         
-
-        <!-- Mensaje cuando no hay productos -->
         <div *ngIf="productosDestacados.length === 0" class="no-productos text-center">
             <p class="text-muted fs-5">No se encontraron productos populares.</p>
         </div>
 
-        <!-- Mostrar productos cuando hay datos -->
         <div *ngIf="productosDestacados.length > 0" class="productos-lista row g-4">
             <div *ngFor="let dato of productosDestacados" class="producto-item col-12 col-md-6 col-lg-4">
 
                 <div class="product-card libro-card position-relative overflow-hidden rounded">
-                    <!-- Imagen del libro con el nombre dinámico -->
                     <img [src]="'/covers/' + dato.title + '.png'" class="img-fluid rounded-top" [alt]="dato.title" />
                     <div class="card-body p-4 text-white">
                         <h5 class="product-title fw-bold text-white">{{ dato.title }}</h5>

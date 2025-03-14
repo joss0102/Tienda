@@ -10,7 +10,7 @@ import { NgFor, NgIf } from '@angular/common';
   styleUrls: ['./pay.component.scss']
 })
 export class PayComponent {
-  @Input() totalCompra: string = ''; // Recibimos el total desde el carrito
+  @Input() totalCompra: string = '';
   @Output() cerrar = new EventEmitter<void>();
 
   librosEnCarrito: any[] = [];
@@ -25,11 +25,11 @@ export class PayComponent {
 
   procesarPago() {
     alert('Pago procesado con éxito');
-    this.cerrar.emit(); // Cierra el modal después del pago
+    this.cerrar.emit();
   }
 
   cerrarModal() {
-    this.cerrar.emit(); // Cierra el modal cuando el usuario hace clic en ✖ o cancelar
+    this.cerrar.emit();
   }
   vaciarCarrito() {
     this.carritoService.vaciarCarrito();

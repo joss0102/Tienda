@@ -50,7 +50,6 @@
   </section>
 </section>
 
-<!-- Modal de detalles del libro -->
 <div *ngIf="libroSeleccionado" class="modal fade show d-block" id="bookModal" tabindex="-1" aria-labelledby="bookModalLabel" aria-hidden="true" style="background: rgba(0, 0, 0, 0.5);">
   <div class="modal-dialog modal-lg" style="max-width: 60%;">
     <div class="modal-content">
@@ -64,5 +63,4 @@
   </div>
 </div>
 
-<!-- Modal de añadido al carrito -->
 <app-added-order *ngIf="mostrarModalPedido" [libro]="libroSeleccionado" (cerrar)="cerrarModalPedido()"></app-added-order>

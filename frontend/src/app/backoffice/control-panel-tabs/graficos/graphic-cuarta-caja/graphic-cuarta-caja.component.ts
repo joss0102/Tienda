@@ -30,7 +30,7 @@ export class GraphicCuartaCajaComponent implements OnInit {
       }
     },
   };
-  public lineChartLabels: string[] = [];  // Aquí vamos a agregar los nombres de los libros.
+  public lineChartLabels: string[] = [];
   public lineChartData: { labels: string[], datasets: ChartDataset<'line'>[] } = {
     labels: [],
     datasets: [

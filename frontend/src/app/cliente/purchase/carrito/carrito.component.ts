@@ -3,7 +3,6 @@ import { CarritoService } from '../../../services/service/carrito.service';
 import { PayComponent } from "../pay/pay.component";
 import { NgFor, NgIf } from '@angular/common';
 
-// Definimos un tipo para los libros en el carrito
 interface Libro {
   id: number;
   title: string;
@@ -22,7 +21,7 @@ interface Libro {
 })
 export class CarritoComponent implements OnInit {
   librosEnCarrito: Libro[] = [];
-  mostrarModalPago = false; // Estado del modal
+  mostrarModalPago = false;
 
   constructor(private carritoService: CarritoService) {}
 
@@ -32,32 +31,26 @@ export class CarritoComponent implements OnInit {
     });
   }
 
-  // 🛒 Vaciar el carrito
   vaciarCarrito() {
     this.carritoService.vaciarCarrito();
   }
 
-  // ❌ Eliminar un libro del carrito
   eliminarLibro(id: number) {
     this.carritoService.eliminarLibro(id);
   }
 
-  // 🏷️ Total del carrito
   get total() {
     return this.librosEnCarrito.reduce((total, libro) => total + libro.price, 0).toFixed(2);
   }
 
-  // 📌 Abrir el modal de pago
   abrirModalPago() {
     this.mostrarModalPago = true;
   }
 
-  // ❌ Cerrar el modal de pago
   cerrarModalPago() {
     this.mostrarModalPago = false;
   }
 
-  // Agrupar libros por ID y mostrar solo una fila para cada uno con la cantidad
   get librosAgrupados(): Libro[] {
     const agrupados: Libro[] = [];
 

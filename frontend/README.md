@@ -37,7 +37,7 @@ Los administradores pueden gestionar y analizar los libros leídos por los usuar
 - El backoffice debe contar con las siguientes secciones:
   - [🟢control-panel] Página principal: Vista general de administración.
   - [🟢profile] Página de perfil: Información del usuario y opción para modificar contraseña.
-  - [🔴my-products] Página de ver mis productos: Listado de productos creados por el usuario, con opción para añadir y eliminar productos.
+  - [🟡my-products] Página de ver mis productos: Listado de productos creados por el usuario, con opción para añadir y eliminar productos.
 
 ### 2. Página del Cliente
 

@@ -5,13 +5,13 @@ import { NgFor, NgIf } from '@angular/common';
 import { ProductService } from '../../../services/service/product.service';
 import { Subscription } from 'rxjs';
 import { InfoShowComponent } from '../info-show/info-show.component';
-import { AddedOrderComponent } from '../added-order/added-order.component';  // Importar el componente AddedOrder
+import { AddedOrderComponent } from '../added-order/added-order.component';
 import { Libro } from '../../../services/models/libro.model';
 
 @Component({
   selector: 'app-tienda',
   standalone: true,
-  imports: [NgFor, NgIf, InfoShowComponent, AddedOrderComponent],  // Incluir AddedOrder en imports
+  imports: [NgFor, NgIf, InfoShowComponent, AddedOrderComponent],
   templateUrl: './tienda.component.html',
   styleUrls: ['./tienda.component.scss']
 })
@@ -24,7 +24,7 @@ export class TiendaComponent implements OnInit, OnDestroy {
   paginaActual: number = 1;
   totalPaginas: number = 0;
   libroSeleccionado: Libro | null = null;
-  mostrarModalPedido = false;  // Estado para mostrar el modal de confirmación
+  mostrarModalPedido = false;
 
   constructor(
     private carritoService: CarritoService,
@@ -81,9 +81,9 @@ export class TiendaComponent implements OnInit, OnDestroy {
 
   agregarAlCarrito(libro: Libro) {
     this.carritoService.agregarLibroAlCarrito(libro);
-    this.cerrarModal();  // Cierra el modal de detalles
-    this.libroSeleccionado = null;  // Limpia el libro seleccionado
-    this.mostrarModalPedido = true;  // Muestra el modal de confirmación
+    this.cerrarModal();
+    this.libroSeleccionado = null;
+    this.mostrarModalPedido = true;
   }
 
   ngOnDestroy(): void {
@@ -92,7 +92,6 @@ export class TiendaComponent implements OnInit, OnDestroy {
     }
   }
 
-  // Manejador para el evento de cierre del modal de confirmación
   cerrarModalPedido() {
     this.mostrarModalPedido = false;
   }

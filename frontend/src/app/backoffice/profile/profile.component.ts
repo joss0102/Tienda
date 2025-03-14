@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { TokenService } from '../../services/auth/token.service';
 import { UserInfoService } from '../../services/service/user-info.service';
-import { UserService } from '../../services/service/user.service'; // Importa UserService
+import { UserService } from '../../services/service/user.service';
 import { NgIf } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
@@ -27,7 +27,7 @@ export class ProfileComponent implements OnInit {
   constructor(
     private userInfoService: UserInfoService,
     private tokenService: TokenService,
-    private userService: UserService // Inyectamos el servicio
+    private userService: UserService
   ) {}
 
   ngOnInit(): void {
@@ -74,17 +74,14 @@ export class ProfileComponent implements OnInit {
     });
   }
 
-  // Abrir modal para editar datos
   openConfigModal(): void {
     this.configModalOpen = true;
   }
 
-  // Cerrar modal
   closeConfigModal(): void {
     this.configModalOpen = false;
   }
 
-  // Guardar cambios de perfil y contraseña
   saveChanges(): void {
     if (this.newPassword === this.confirmPassword) {
       const userId = this.userInfo.user.id;
@@ -101,10 +98,10 @@ export class ProfileComponent implements OnInit {
           console.log('Datos actualizados con éxito:', response);
           alert('Perfil actualizado correctamente');
           this.closeConfigModal();
+
         },
         (error) => {
-          console.error('Error al actualizar los datos del usuario:', error);
-          alert('Error al actualizar los datos');
+          console.error('Error al actualizar los datos del usuario:');
         }
       );
     } else {
@@ -113,7 +110,6 @@ export class ProfileComponent implements OnInit {
     }
   }
 
-  // Cambiar contraseña
   changePassword(): void {
     if (this.newPassword === this.confirmPassword) {
       if (this.userInfo && this.userInfo.user && this.userInfo.user.id) {
@@ -123,7 +119,7 @@ export class ProfileComponent implements OnInit {
           (response) => {
             console.log('Contraseña cambiada con éxito:', response);
             alert('Contraseña cambiada correctamente');
-            // Limpiar los campos
+
             this.oldPassword = '';
             this.newPassword = '';
             this.confirmPassword = '';

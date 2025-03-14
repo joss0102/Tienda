@@ -2,10 +2,8 @@
   <div class="container cart-container py-5">
     <h2 class="text-center mb-4 text-white">Carrito de Compras</h2>
 
-    <!-- Si hay libros en el carrito, mostrar esta sección -->
     <div *ngIf="librosAgrupados.length > 0; else carritoVacio">
       <div class="row">
-        <!-- Mostrar los libros del carrito -->
         <div class="col-md-8">
           <ul class="list-group">
             <li class="list-group-item d-flex justify-content-between align-items-center shadow-sm mb-3" *ngFor="let libro of librosAgrupados">
@@ -25,7 +23,6 @@
           </ul>
         </div>
 
-        <!-- Resumen de la compra -->
         <div class="col-md-4">
           <div class="card shadow-sm">
             <div class="card-body">
@@ -43,7 +40,6 @@
       </div>
     </div>
 
-    <!-- Si el carrito está vacío, mostrar esta sección -->
     <ng-template #carritoVacio>
       <div class="text-center text-white">
         <p class="h5">Parece que aún no has agregado nada a tu carrito.</p>
