@@ -17,6 +17,8 @@ import { MyProductsComponent } from './backoffice/products/my-products/my-produc
 import { InfoShowComponent } from './cliente/show-products/info-show/info-show.component';
 import { adminGuard } from './services/guards/admin-guard.guard';
 
+import { ProfileClienteComponent } from './cliente/user/profile-cliente/profile-cliente.component';
+
 
 
 export const routes: Routes = [
@@ -32,7 +34,7 @@ export const routes: Routes = [
       {path: "home", component: HomeComponent},
       {path: "carrito", component: CarritoComponent},
       { path: 'show-info/:id', component: InfoShowComponent }, // Acepta un ID
-     // {path: "profile-cliente", component: CarritoComponent},
+      {path: "profile-cliente", component: ProfileClienteComponent},
     ]
   },
   // backoffice

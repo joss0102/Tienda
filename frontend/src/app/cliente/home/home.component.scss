@@ -124,17 +124,43 @@
         height: auto;
         position: absolute;
         transition: opacity 0.3s ease;
-        text-align: justify;        // Justificar el texto
+        text-align: justify;
     
-        text-indent: 30px;          // Agregar sangría al primer renglón
-        display: flex;              // Usar flex para la alineación
-        justify-content: center;    // Asegura que el contenido esté centrado
-        align-items: center;        // Centra el texto verticalmente
+        text-indent: 30px; 
+        display: flex;
+        justify-content: center; 
+        align-items: center;
     }
     
     .product-card:hover .hover-info {
 
-        opacity: 0.9; /* Opcional, ajusta la opacidad si lo deseas */
-        transition: visibility 0s, opacity 0.3s ease; /* Asegura que la transición de visibilidad no se retrase */
+        opacity: 0.9;
+        transition: visibility 0s, opacity 0.3s ease;
+    }
+    @media (max-width: 767px) {
+        .producto-item {
+            max-width: 46%;
+            min-width: 46%;
+        }
+    
+        .product-card img {
+            width: 60%;
+        }
+    
+        .card-body {
+            padding: 0.7rem;
+        }
+    
+        .product-title {
+            font-size: 0.7rem;
+        }
+    
+        .product-price {
+            font-size: 0.7rem;
+        }
+        .hover-info{
+            font-size: 0.5rem;
+            text-indent: 0; 
+        }
     }
 }

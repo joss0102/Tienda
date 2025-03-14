@@ -76,7 +76,7 @@ public class UsersDataLoader implements CommandLineRunner {
         userInfo.setFirstName(firstName);
         userInfo.setLastName(lastName);
         userInfo.setAddress(address);
-        
+
         userInfoRepository.save(userInfo);
 
         return userInfo;
