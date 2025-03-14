@@ -1,6 +1,5 @@
 package com.tienda.app.config;
 
-
 import com.tienda.app.repositories.UserRepository;
 import com.tienda.app.security.JwtAuthenticationFilter;
 import com.tienda.app.security.JwtUtil;
@@ -9,14 +8,16 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 import org.springframework.security.config.http.SessionCreationPolicy;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import org.springframework.security.web.firewall.HttpFirewall;
+import org.springframework.security.web.firewall.StrictHttpFirewall;
 
 @Configuration
 public class SecurityConfig {
@@ -47,17 +48,21 @@ public class SecurityConfig {
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http, JwtAuthenticationFilter jwtAuthFilter) throws Exception {
-        http.csrf(csrf -> csrf.disable())
+        http.csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers(
                                 "/users/login",
-                                "/users",
                                 "/users/register",
                                 "/users/check-token",
+                                "/order-items",
+                                "/orders",
                                 "/products/**",
-                                "order-items",
-                                "orders"
-
+                                "/users",               // Permite obtener la lista de usuarios
+                                "/users/*/change-password", // Permite cambiar la contraseña
+                                "/users/**",            // Permite acceso a otras rutas de usuario
+                                "/user-info",
+                                "/user-info/**",
+                                "/user/user-info/**"
                         ).permitAll()
                         .anyRequest().authenticated()
                 )
@@ -77,4 +82,16 @@ public class SecurityConfig {
         return new BCryptPasswordEncoder();
     }
 
+    // Configuración del firewall sin usar setFirewall
+    @Bean
+    public HttpFirewall httpFirewall() {
+        StrictHttpFirewall firewall = new StrictHttpFirewall();
+        firewall.setAllowUrlEncodedPercent(true); // Permite '%'
+        firewall.setAllowUrlEncodedSlash(true);  // Permite '/'
+
+        return firewall;
+    }
+
+
+    // Esta configuración ya no es necesaria, ya que el firewall se maneja con @Bean
 }

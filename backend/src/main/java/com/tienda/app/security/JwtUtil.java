@@ -24,9 +24,10 @@ public class JwtUtil {
         return Keys.hmacShaKeyFor(this.secret.getBytes());
     }
 
-    public String generateToken(String username) {
+    public String generateToken(String username, Long userId) {
         return Jwts.builder()
                 .setSubject(username)
+                .claim("userId", userId) // Agregar userId al token
                 .setIssuedAt(new Date())
                 .setExpiration(new Date(System.currentTimeMillis() + this.expiration))
                 .signWith(this.getSigningKey(), SignatureAlgorithm.HS256)
@@ -35,6 +36,10 @@ public class JwtUtil {
 
     public String extractUsername(String token) {
         return this.extractClaim(token, Claims::getSubject);
+    }
+
+    public Long extractUserId(String token) {
+        return this.extractClaim(token, claims -> claims.get("userId", Long.class)); // Extraer userId
     }
 
     public <T> T extractClaim(String token, Function<Claims, T> claimsResolver) {

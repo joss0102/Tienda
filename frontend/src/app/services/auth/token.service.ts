@@ -20,21 +20,21 @@ export class TokenService {
       secure: environment.tokenSecure, // En producción esto tiene que ser true
       sameSite: "Strict"
     });
-
+  
     this.cookieService.set(this.REFRESH_TOKEN_KEY, refreshToken, {
       path: "/",
       secure: environment.tokenSecure, // En producción esto tiene que ser true
       sameSite: "Strict"
     });
   }
-
+  
   // Obtener el token de acceso desde las cookies
   getAccessToken(): string | null {
     const token = this.cookieService.get(this.ACCESS_TOKEN_KEY);
     console.log('Obteniendo token de acceso:', token);  // Log para verificar el valor
     return token || null;
   }
-
+  
   // Obtener el token de refresco desde las cookies
   getRefreshToken(): string | null {
     const token = this.cookieService.get(this.REFRESH_TOKEN_KEY);
@@ -68,15 +68,28 @@ export class TokenService {
   getUserId(): number {
     const token = this.getAccessToken();
     if (token) {
-      const decoded = this.decodeToken(token); // Método de decodificación
-      return decoded.userId;  // Suponiendo que 'userId' está en el payload del JWT
+      console.log('Token de acceso:', token); // Verifica que el token esté presente
+      try {
+        const decoded = this.decodeToken(token); // Decodifica el token solo si no es null
+        console.log('Token decodificado:', decoded); // Verifica cómo se ve el token decodificado
+        return decoded.userId;  // Suponiendo que 'userId' está en el payload del JWT
+      } catch (error) {
+        console.error('Error al decodificar el token:', error);  // Captura errores en la decodificación
+      }
     }
-    return 0;
+    return 0;  // Si no hay token, devuelve 0
   }
+  
 
-  // Método para decodificar el token (si es JWT)
-  private decodeToken(token: string): any {
+  // Método público para decodificar el token (si es JWT)
+  public decodeToken(token: string): any {
+    if (!token) {
+      throw new Error("El token no puede ser nulo o vacío.");
+    }
     const payload = token.split('.')[1];  // El payload de un JWT está en la segunda parte
-    return JSON.parse(atob(payload));  // Decodificar y parsear el payload
+    const decoded = JSON.parse(atob(payload));  // Decodificar y parsear el payload
+    console.log('Token decodificado:', decoded);  // Verifica el contenido del payload
+    return decoded;
   }
+  
 }

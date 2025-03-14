@@ -38,13 +38,15 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
         final String authHeader = request.getHeader("Authorization");
         String token = null;
         String username = null;
+        Long userId = null; // Variable para almacenar el userId
 
         if (authHeader != null && authHeader.startsWith("Bearer ")) {
             token = authHeader.substring(7);
             try {
                 username = this.jwtUtil.extractUsername(token);
+                userId = this.jwtUtil.extractUserId(token); // Extraer userId del token
             } catch (JwtException e) {
-                logger.error("Error al extraer el username del token: " + e.getMessage());
+                logger.error("Error al extraer el username o userId del token: " + e.getMessage());
             }
         }
 
@@ -55,6 +57,11 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
                 authToken.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
                 SecurityContextHolder.getContext().setAuthentication(authToken);
             }
+        }
+
+        // Colocar el userId en los atributos de la solicitud para que pueda ser usado más tarde
+        if (userId != null) {
+            request.setAttribute("userId", userId);
         }
 
         filterChain.doFilter(request, response);

@@ -1,0 +1,17 @@
+.container {
+    height: 92.7vh;
+    max-height: 100vh;
+}
+.profile {
+
+    max-width: 900px;
+    background: rgba(91, 91, 91, 0.8);
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.profile-photo {
+    width: 600px;
+    object-fit: cover;
+}
+

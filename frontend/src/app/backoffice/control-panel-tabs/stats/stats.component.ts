@@ -5,7 +5,7 @@ import { NgFor, NgIf } from '@angular/common';
 
 @Component({
   selector: 'app-stats',
-  imports: [InfoStatsComponent, NgFor,NgIf],
+  imports: [InfoStatsComponent,NgIf],
   templateUrl: './stats.component.html',
   styleUrls: ['./stats.component.scss']
 })

@@ -1,12 +1,12 @@
 .stats-container {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr; /* repeat(4, 1fr) */
+  grid-template-columns: 1fr 1fr 1fr 1fr;
   grid-column-gap: 20px;
   grid-row-gap: 20px;
   align-items: center;
   justify-content: center;
+  transition: all 0.3s ease-in-out;
 
-  /* Puntos de ruptura 1200px y 769px */
   @media (max-width: 1200px) {
     & {
       grid-template-columns: 1fr 1fr;
@@ -18,5 +18,35 @@
       grid-template-columns: 1fr;
     }
   }
+}
 
+.stats-container:hover .shadow-sm {
+
+  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+.stats-container .shadow-sm {
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.stats-container .shadow-sm:hover {
+  transform: scale(1.05);
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+}
+.bg-info:hover {
+  filter: brightness(85%); /* Oscurecer el fondo bg-info */
+}
+
+.bg-success:hover {
+  filter: brightness(85%); /* Oscurecer el fondo bg-success */
+}
+
+.bg-warning:hover {
+  filter: brightness(85%); /* Oscurecer el fondo bg-warning */
+}
+
+.bg-danger:hover {
+  filter: brightness(85%); /* Oscurecer el fondo bg-danger */
 }

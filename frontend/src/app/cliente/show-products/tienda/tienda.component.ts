@@ -1,11 +1,12 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { CarritoService } from '../../../services/service/carrito.service';
-import { Libro } from '../../../services/models/libro.model';
+
 import { NgFor, NgIf } from '@angular/common';
 import { ProductService } from '../../../services/service/product.service';
 import { Subscription } from 'rxjs';
 import { InfoShowComponent } from '../info-show/info-show.component';
 import { AddedOrderComponent } from '../added-order/added-order.component';  // Importar el componente AddedOrder
+import { Libro } from '../../../services/models/libro.model';
 
 @Component({
   selector: 'app-tienda',
@@ -18,7 +19,7 @@ export class TiendaComponent implements OnInit, OnDestroy {
   datos: any[] = [];
   datosPaginados: any[] = [];
   private datosSubscription!: Subscription;
-
+  
   librosPorPagina: number = 6;
   paginaActual: number = 1;
   totalPaginas: number = 0;

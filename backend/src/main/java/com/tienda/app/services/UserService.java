@@ -11,6 +11,7 @@ import com.tienda.app.repositories.RoleRepository;
 import com.tienda.app.repositories.UserInfoRepository;
 import com.tienda.app.repositories.UserRepository;
 import com.tienda.app.security.JwtUtil;
+import jakarta.persistence.EntityNotFoundException;
 import jakarta.transaction.Transactional;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
@@ -111,7 +112,7 @@ public class UserService implements UserDetailsService {
         LoginResponse loginData = new LoginResponse();
         loginData.setUsername(credentials.getUsername());
         loginData.setRole(user.getRole().getRoleName());
-        loginData.setToken(this.jwtUtil.generateToken(credentials.getUsername()));
+        loginData.setToken(this.jwtUtil.generateToken(credentials.getUsername(),user.getId()));
 
         System.out.println("Generated token: " + loginData.getToken()); // Verifica el token
         return loginData;
@@ -123,4 +124,17 @@ public class UserService implements UserDetailsService {
                 checkTokenRequest.getUsername()
         );
     }
+    // UserService.java
+    public boolean changePassword(Long userId, String oldPassword, String newPassword) {
+        User user = userRepository.findById(userId).orElseThrow(() -> new EntityNotFoundException("Usuario no encontrado"));
+
+        if (!passwordEncoder.matches(oldPassword, user.getPassword())) {
+            throw new RuntimeException("La contraseña actual no es correcta");
+        }
+
+        user.setPassword(passwordEncoder.encode(newPassword));
+        userRepository.save(user);
+        return true;
+    }
+
 }

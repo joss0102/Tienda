@@ -1,5 +1,6 @@
 export class Libro {
     constructor(
+        /*
         public titulo: string,
         public autor: string,
         public genero: string,
@@ -8,5 +9,6 @@ export class Libro {
         public imagen: string,
         public descripcion: string,
         public popularidad:number
+        */
     ) {}
 }

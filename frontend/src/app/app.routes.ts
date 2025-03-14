@@ -10,9 +10,11 @@ import {TiendaComponent} from './cliente/show-products/tienda/tienda.component';
 import {ControlPanelComponent} from './backoffice/control-panel/control-panel.component';
 import {PageNotFoundComponent} from './page-not-found/page-not-found.component';
 import { CarritoComponent } from './cliente/purchase/carrito/carrito.component';
+import { ProfileComponent } from './backoffice/profile/profile.component';
 import {publicGuard} from './services/guards/public.guard';
 
 import { InfoShowComponent } from './cliente/show-products/info-show/info-show.component';
+
 
 
 export const routes: Routes = [
@@ -28,6 +30,7 @@ export const routes: Routes = [
       {path: "home", component: HomeComponent},
       {path: "carrito", component: CarritoComponent},
       { path: 'show-info/:id', component: InfoShowComponent }, // Acepta un ID
+     // {path: "profile-cliente", component: CarritoComponent},
     ]
   },
   // backoffice
@@ -38,6 +41,7 @@ export const routes: Routes = [
 
       {path: "", redirectTo: "control-panel", pathMatch: "full"}, // -> www.ejemplo.com/app
       {path: "control-panel", component: ControlPanelComponent}, // -> www.ejemplo.com/app/control-panel
+      {path: "profile", component: ProfileComponent},
     ]
   },
 
